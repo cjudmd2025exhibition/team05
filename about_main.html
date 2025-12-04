@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - 메인 페이지</title>
+    
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="about_main.css">
+</head>
+<body>
+    <header class="header">
+        <!-- 항상 네비게이션이 보이도록 header-container에 기본으로 active 클래스 추가 -->
+        <div class="header-container active">
+            <nav class="nav nav-left">
+                <ul class="nav-menu">
+                    <li><a href="door.html#entrance">입구</a></li>
+                    <li><a href="about_main.html">사후기록</a></li>
+                </ul>
+            </nav>
+            <div class="logo">
+                <a href="door.html"><img src="image/header_Logo.png" alt="Logo"></a>
+            </div>
+            <nav class="nav nav-right">
+                <ul class="nav-menu">
+                    <li><a href="dead-assembly.html">망자집회</a></li>
+                    <li><a href="video.html">차안과 피안</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Parallax Container -->
+    <div class="parallax-container">
+        <!-- Layer 1: Background (about_bg.png) - 가장 느리게 -->
+        <div class="parallax-layer layer-bg">
+            <img src="image/about_bg.png" alt="Background" />
+        </div>
+
+        <!-- Layer 2: Mini -->
+        <div class="parallax-layer layer-mini">
+            <img src="image/Mini.png" alt="Mini" />
+        </div>
+
+        <!-- Layer 3: Cloud Back -->
+        <div class="parallax-layer layer-cloud-back">
+            <img src="image/Cloud_Back.png" alt="Cloud Back" />
+        </div>
+
+        <!-- Layer 4: Cloud Mid -->
+        <div class="parallax-layer layer-cloud-mid">
+            <img src="image/Cloud_Mid.png" alt="Cloud Mid" />
+        </div>
+
+        <!-- Layer 5: Cloud Front -->
+        <div class="parallax-layer layer-cloud-front">
+            <img src="image/Cloud_Front.png" alt="Cloud Front" />
+        </div>
+
+        <!-- Layer 6: Somini -->
+        <div class="parallax-layer layer-somini">
+            <img src="image/somini.png" alt="Somini" />
+        </div>
+
+        <!-- Layer 7: Title (스크롤 끝에 나타남) -->
+        <div class="parallax-layer layer-title">
+            <img src="image/title.svg" alt="Title" />
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about-section about-intro" aria-labelledby="about-intro-heading">
+        <div class="about-intro__inner">
+            <div class="about-intro__title-block">
+            <h1 id="about-intro-heading" class="about-intro__title">
+                어서오세요.<br>
+                <span class="highlight">디지털 저승국</span>에 오신걸<br>
+                환영합니다.
+            </h1>
+            </div>
+
+            <div class="about-intro__layout">
+                <div class="about-intro__text about-intro__text--left">
+                    <p>
+                        디지털 저승국은 망자들의 사후를 정해주는 저승회사입니다. 우리는 망자의 디지털 업을 <br>바탕으로, 7번의 심판 과정을 통해 윤회 혹은 멸실을 결정합니다.
+                    <br><br>7인의 디지털 판관이 망자의 생전 기록을 정밀하게 분석하고 최종 판결을 내립니다.
+                
+                    <br><br>망자는 49일 동안 7개의 지옥을 거치며 심판받게 됩니다.  </p>
+                    
+                </div>
+                <div class="about-intro__text about-intro__text--right">
+                    <p>
+                        디사구는 인간의 죽음 이후에도 데이터는 남는다는 전제 아래 새로운 사후 세계의 질서를 설계하고 운영합니다.
+                        <br><br>당신의 업보는 저장되어 있으며, 심판은 지금 이 순간에도 진행 중입니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Content Section Template Example -->
+    <section class="about-content-section" aria-labelledby="about-digital-meaning">
+        <div class="about-content__inner">
+            <div class="about-content__text" role="presentation">
+                <header class="about-content__header">
+                    <h2 id="about-digital-meaning" class="about-content__title">디지털 저승국이란</h2>
+                    <p class="about-content__quote">“디지털 저승국은 살아생전 남긴 모든 온라인 흔적을 모아 심판하는 또 다른 차원의 법정이다.”</p>
+                </header>
+
+                <div class="about-content__body">
+                    <article class="about-content__block">
+                        <h3 class="about-content__subtitle">디지털 저승국이란</h3>
+                        <p>
+                            인간이 남긴 디지털 흔적이 모이는 세계, 디지털 저승국. 이곳은 살아 있을 때 남긴 모든 온라인 기록이 망자를 평가하는 공간이다.
+                            댓글 하나, 공유한 밈, 무심코 누른 좋아요까지 모두 이 곳에 증거가 도착한다. 저승의 심판관들은 당신의 디지털 발자국을 읽고, 그 의미를 해석한다.
+                        </p>
+                    </article>
+
+                    <article class="about-content__block">
+                        <h3 class="about-content__subtitle">디지털 저승국의 판결</h3>
+                        <p>
+                            당신이 남긴 작은 행위들이 누군가의 삶에 어떤 흔적을 남겼는지 드러난다. 현실에서는 잊혀진 기록도, 이곳에서는 선명하게 되살아난다. 
+                            디지털 저승국은 인간의 삶과 죽음을 잇는 또 다른 차원의 법정이다. 여기서 내려진 판결은 당신이 남긴 업(業)의 결산이다. 그리고, 이곳에서의 판결은 되돌릴 수 없다.
+                        </p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="about-content__visual" aria-hidden="true">
+                <div class="about-content__circle">
+                    <img src="inter image/hand.webp" alt="" class="about-content__hand" loading="lazy">
+                    <img src="inter image/flower.webp" alt="" class="about-content__flower" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Judges Section -->
+    <section class="digital-judges" aria-labelledby="digital-judges-heading">
+        <div class="digital-judges__bg-text" aria-hidden="true"></div>
+        <h2 id="digital-judges-heading" class="digital-judges__title">디지털 시왕</h2>
+        <div class="judges-grid">
+            <article class="judge-card">
+                <img src="inter image/First.webp" alt="디지털 시왕 초강왕" loading="lazy">
+                <h3>진광대왕</h3>
+                <p>익명 뒤에 숨어 던진 말과 집단적 모욕은 깊은 상처를 남긴다. 그 상처의 무게를 되돌려 심판한다.</p>
+            </article>
+
+            <article class="judge-card">
+                <img src="inter image/Second.webp" alt="디지털 시왕 초강왕 이차" loading="lazy">
+                <h3>초강대왕</h3>
+                <p>타인의 창작물, 사진, 기록을 허락없이 가져간 행위는 도둑질과 같다. 그 대가를 치르게 한다.</p>
+            </article>
+
+            <article class="judge-card">
+                <img src="inter image/Third.webp" alt="디지털 시왕 송제왕" loading="lazy">
+                <h3>송제대왕</h3>
+                <p>조작된 영상과 불법 자료는 한 사람의 삶을 무너뜨린다. 그 파괴의 책임을 묻는다.</p>
+            </article>
+
+            <article class="judge-card">
+                <img src="inter image/Fourth.webp" alt="디지털 시왕 오관왕" loading="lazy">
+                <h3>오관대왕</h3>
+                <p>사실 확인 없는 말은 불씨가 되어 세상을 어지럽힌다. 그 불씨의 근원을 찾아 단죄한다.</p>
+            </article>
+
+            <article class="judge-card">
+                <img src="inter image/Fifth.webp" alt="디지털 시왕 염라대왕" loading="lazy">
+                <h3>염라대왕</h3>
+                <p>생전의 모든 디지털 행적을 거울처럼 비춘다. 판결 전, 스스로의 발자취와 마주하게 한다.</p>
+            </article>
+
+            <article class="judge-card">
+                <img src="inter image/Sixth.webp" alt="디지털 시왕 변성왕" loading="lazy">
+                <h3>변성대왕</h3>
+                <p>실제보다 과장된 모습으로 타인을 속이는 행위는 허상이다. 그 허상을 걷어내고 진실을 드러낸다.</p>
+            </article>
+
+            <article class="judge-card">
+                <img src="inter image/Seventh.webp" alt="디지털 시왕 독사왕" loading="lazy">
+                <h3>태산대왕</h3>
+                <p>모든 심판의 결과를 종합해 다음 생의 길을 결정한다. 그 길은 업의 무게가 이끈다.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- 디지털 지옥도 살펴보기 섹션 -->
+    <section class="digital-hell-section">
+        <h2 class="digital-hell-section__title">디지털 지옥도 살펴보기</h2>
+        <div class="hell-cards-container">
+            <!-- 도산지옥 카드 -->
+            <div class="hell-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="hell-image sword-mountain"></div>
+                    </div>
+                    <div class="card-back">
+                        <div class="card-title">
+                            <div class="hanja">刀山地獄</div>
+                            <div class="korean">도산지옥</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 화탕지옥 카드 -->
+            <div class="hell-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="hell-image boiling-soup"></div>
+                    </div>
+                    <div class="card-back">
+                        <div class="card-title">
+                            <div class="hanja">鑊湯地獄</div>
+                            <div class="korean">화탕지옥</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 한빙지옥 카드 -->
+            <div class="hell-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="hell-image cold-ice"></div>
+                    </div>
+                    <div class="card-back">
+                        <div class="card-title">
+                            <div class="hanja">寒水地獄</div>
+                            <div class="korean">한빙지옥</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 검수지옥 카드 -->
+            <div class="hell-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="hell-image sword-tree"></div>
+                    </div>
+                    <div class="card-back">
+                        <div class="card-title">
+                            <div class="hanja">拔舌地獄</div>
+                            <div class="korean">발설지옥</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 업의 산 섹션 -->
+    <section class="digital-mountain-section">
+        <!-- 디지털 푸터 섹션 -->
+        <section class="digital-footer-section">
+            <div class="footer-inner">
+                <div class="footer-header">
+                    <h2>Digital Afterlife Records</h2>
+                    <div class="view-toggle">
+                        <button class="grid-btn">Grid</button>
+                        <button class="list-btn active">List</button>
+                    </div>
+                </div>
+                <ul class="footer-list">
+                    <li>
+                        <span class="footer-title">Department of Judgment</span>
+                        <span class="footer-role">AI Ethical System / Data Processing</span>
+                        <span class="footer-link">View Records →</span>
+                    </li>
+                    <li>
+                        <span class="footer-title">Office of Karma Transmission</span>
+                        <span class="footer-role">Digital Traces Management</span>
+                        <span class="footer-link">Access Portal →</span>
+                    </li>
+                    <li>
+                        <span class="footer-title">Seven Judges Division</span>
+                        <span class="footer-role">Behavioral Analytics / Memory Archive</span>
+                        <span class="footer-link">Open Files →</span>
+                    </li>
+                </ul>
+                <div class="footer-credit">
+                    <p>© 2025 DISAGU Digital Afterlife Corp. All Rights Reserved.</p>
+                </div>
+            </div>
+        </section>
+    </section>
+ 
+ 
+    <script>
+        // 배경 텍스트 채우기
+        function fillBackgroundText() {
+            const bgTextElement = document.querySelector('.digital-judges__bg-text');
+            if (!bgTextElement) return;
+            
+            const text = "010101 49 업보 윤회 심판 기록 ";
+            const containerHeight = bgTextElement.offsetHeight;
+            const fontSize = parseFloat(getComputedStyle(bgTextElement).fontSize);
+            const lineHeight = parseFloat(getComputedStyle(bgTextElement).lineHeight);
+            const charsPerLine = Math.floor(bgTextElement.offsetWidth / (fontSize * 0.6));
+            const linesNeeded = Math.ceil(containerHeight / lineHeight) + 10;
+            
+            let fullText = "";
+            for (let i = 0; i < linesNeeded * charsPerLine; i++) {
+                fullText += text;
+            }
+            
+            bgTextElement.textContent = fullText;
+        }
+        
+        // 페이지 로드 시 및 리사이즈 시 실행
+        window.addEventListener('load', fillBackgroundText);
+        window.addEventListener('resize', fillBackgroundText);
+        
+        // 햄버거 메뉴 토글 (모바일용)
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLeft = document.querySelector('.nav-left');
+        const navRight = document.querySelector('.nav-right');
+        
+        menuToggle.addEventListener('click', () => {
+            navLeft.classList.toggle('active');
+            navRight.classList.toggle('active');
+        });
+        
+        // 메뉴 링크 클릭 시 모바일 메뉴 닫기
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLeft.classList.remove('active');
+                    navRight.classList.remove('active');
+                }
+            });
+        });
+
+        // 스크롤 방향에 따라 로고 표시/숨김
+        let lastScrollY = window.scrollY;
+        const scrollThreshold = 100;
+
+        window.addEventListener('scroll', () => {
+            const currentY = window.scrollY;
+
+            if (currentY > scrollThreshold && currentY > lastScrollY) {
+                document.body.classList.add('logo-hidden');
+            } else if (currentY < lastScrollY || currentY <= scrollThreshold) {
+                document.body.classList.remove('logo-hidden');
+            }
+
+            lastScrollY = currentY;
+        });
+
+        // Grid/List 뷰 전환
+        const footerSection = document.querySelector('.digital-footer-section');
+        const gridBtn = document.querySelector('.grid-btn');
+        const listBtn = document.querySelector('.list-btn');
+
+        if (footerSection && gridBtn && listBtn) {
+            // 기본값은 list-view
+            footerSection.classList.add('list-view');
+
+            gridBtn.addEventListener('click', () => {
+                footerSection.classList.remove('list-view');
+                footerSection.classList.add('grid-view');
+                gridBtn.classList.add('active');
+                listBtn.classList.remove('active');
+            });
+
+            listBtn.addEventListener('click', () => {
+                footerSection.classList.remove('grid-view');
+                footerSection.classList.add('list-view');
+                listBtn.classList.add('active');
+                gridBtn.classList.remove('active');
+            });
+        }
+    </script>
+    <script src="about_main-animation.js"></script>
+</body>
+</html>

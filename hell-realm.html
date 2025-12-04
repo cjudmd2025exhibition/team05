@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웹사이트</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap"
+      rel="stylesheet" />
+
+    <!-- 공통 헤더/레이아웃 스타일 -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- 지옥도 전용 스타일 -->
+    <link rel="stylesheet" href="hell-realm-style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-container active">
+        <nav class="nav nav-left">
+          <ul class="nav-menu">
+            <li><a href="door.html">입구</a></li>
+            <li><a href="about_main.html">사후기록</a></li>
+          </ul>
+        </nav>
+        <div class="logo">
+          <a href="#"><img src="image/header_Logo.png" alt="Logo" /></a>
+        </div>
+        <nav class="nav nav-right">
+          <ul class="nav-menu">
+            <li><a href="dead-assembly.html">망자집회</a></li>
+            <li><a href="video.html">차안과 피안</a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle" aria-label="메뉴 열기">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+    <div class="background-container">
+      <div class="top-section">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+          <div class="hero-inner">
+            <div class="hero-stage">
+              <div class="hero-core" aria-label="사십구재 중앙 텍스트">
+                <div class="hero-subtitle hero-subtitle-top">
+                  불교에서 말하는 49일
+                </div>
+                <div class="hero-subtitle hero-subtitle-middle">지옥도</div>
+                <div class="hero-hanja-text" aria-label="사십구재 한자 타이포">
+                  <span>地</span>
+                  <span>獄</span>
+                  <span>道</span>
+              </div>
+
+                <!-- Circles anchored to hero-core center/bottom -->
+                <div class="core-orbits" aria-hidden="false">
+                  <a
+                    href="six-realms.html"
+                    class="circle-item left circle-link">
+                    <div class="circle-text">
+                      <div class="hanja">六道輪廻</div>
+                      <div class="label">육도윤회</div>
+                    </div>
+                  </a>
+                  <a href="door.html" class="circle-item right circle-link">
+                    <div class="circle-text">
+                      <div class="hanja">四十九齋</div>
+                      <div class="label">사십구재</div>
+                    </div>
+                  </a>
+                  <a
+                    href="intermediate-world.html"
+                    class="circle-item bottom circle-link">
+                    <div class="circle-text">
+                      <div class="hanja">中陰世界</div>
+                      <div class="label">중음세계</div>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- 하단 설명 텍스트 -->
+                <div class="hero-description">
+                  <p>
+                    육도윤회 중 가장 고통스러운 세계로,<br />악업을 쌓은 영혼이
+                    떨어지는 곳
+                  </p>
+                  <p>끝없는 고통과 후회 속에서<br />업보를 씻어내야만 한다.</p>
+                  <p>여기서의 고통은 육체뿐만 아니라<br />마음까지 파괴한다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 곡선 래퍼 - 검은색과 흰색 경계 -->
+      <div class="curve-wrapper">
+        <svg
+          class="top-section-curve"
+          viewBox="0 0 100 400"
+          preserveAspectRatio="none">
+          <!-- 곡선 부분 - 검은색 -->
+          <path d="M0,0 L0,150 Q50,400 100,150 L100,0 Z" fill="#000000" />
+        </svg>
+      </div>
+
+      <div class="bottom-section">
+        <!-- About Section -->
+        <section id="about" class="about section">
+          <!-- 제목과 설명 텍스트 - 두 그룹으로 분리 -->
+          <div class="about-title-section">
+            <!-- 그룹 1: 오른쪽 정렬 -->
+            <div class="group-right">
+              <h2>
+                <span class="red-box animate-char">지</span
+                ><span class="red-box animate-char">옥</span
+                ><span class="red-box animate-char">도</span><br />
+                <span class="red-box animate-char">끝</span
+                ><span class="red-box animate-char">없</span
+                ><span class="red-box animate-char">는</span
+                ><span class="red-box animate-char">고</span
+                ><span class="red-box animate-char">통</span>
+              </h2>
+              <p class="fade-text">
+                <span class="red-text">지옥도는</span> 육도윤회 중 가장
+                고통스럽고 참혹한 세계를 의미한다.
+              </p>
+
+              <p class="fade-text">
+                전생에서 무거운 악업을 쌓았으며,<br />
+                참회나 공덕이 거의 없는 존재가 이곳에 환생하게 된다.
+              </p>
+
+              <p class="fade-text">
+                지옥에서의 고통은 현실의 형벌보다 훨씬 가혹하며,<br />
+                쌓인 업이 소멸될 때까지 지속된다.
+              </p>
+            </div>
+
+            <!-- 그룹 2: 왼쪽 정렬 -->
+            <div class="group-left">
+              <h3>
+                <span class="red-box animate-char">디</span
+                ><span class="red-box animate-char">지</span
+                ><span class="red-box animate-char">털</span
+                ><span class="red-box animate-char">지</span
+                ><span class="red-box animate-char">옥</span
+                ><span class="red-box animate-char">도</span>
+              </h3>
+            </div>
+          </div>
+        </section>
+
+        <!-- 디지털 지옥도 살펴보기 섹션 -->
+        <section class="digital-hell-section">
+          <div class="hell-cards-container">
+            <!-- 도산지옥 카드 -->
+            <div class="hell-card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <div class="hell-image sword-mountain"></div>
+                </div>
+                <div class="card-back">
+                  <div class="card-title">
+                    <div class="hanja">刀山地獄</div>
+                    <div class="korean">도산지옥</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 화탕지옥 카드 -->
+            <div class="hell-card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <div class="hell-image boiling-soup"></div>
+                </div>
+                <div class="card-back">
+                  <div class="card-title">
+                    <div class="hanja">鑊湯地獄</div>
+                    <div class="korean">화탕지옥</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 한빙지옥 카드 -->
+            <div class="hell-card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <div class="hell-image cold-ice"></div>
+                </div>
+                <div class="card-back">
+                  <div class="card-title">
+                    <div class="hanja">寒水地獄</div>
+                    <div class="korean">한빙지옥</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 검수지옥 카드 -->
+            <div class="hell-card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <div class="hell-image sword-tree"></div>
+                </div>
+                <div class="card-back">
+                  <div class="card-title">
+                    <div class="hanja">拔舌地獄</div>
+                    <div class="korean">발설지옥</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 49재 의미 설명 섹션 -->
+        <section id="ritual49" class="ritual-49-section">
+          <div class="ritual-49-container">
+            <!-- 四 -->
+            <div class="ritual-column" data-column="1">
+              <div class="ritual-hanja">地</div>
+              <div class="ritual-description">
+                <p>
+                  땅, 대지를 뜻하며, 기초적 세계와 현실적 기반을 의미합니다.
+                </p>
+                <p>
+                  불교에서는 인간과 중생이 겪는 고통과 업보가 구체적으로
+                  드러나는 영역을 상징합니다.
+                </p>
+              </div>
+            </div>
+
+            <!-- 十 -->
+            <div class="ritual-column" data-column="2">
+              <div class="ritual-hanja">獄</div>
+              <div class="ritual-description">
+                <p>형벌, 감옥, 고통의 장소를 의미합니다.</p>
+                <p>
+                  지옥은 업보에 따라 고통을 받는 세계로, 잘못된 행동과 마음이
+                  만들어낸 결과의 현실적 장소를 보여줍니다
+                </p>
+              </div>
+            </div>
+
+            <!-- 九 -->
+            <div class="ritual-column" data-column="3">
+              <div class="ritual-hanja">道</div>
+              <div class="ritual-description">
+                <p>
+                  길, 세계, 영역을 뜻합니다. 여기서는 지옥 세계라는 존재 영역을
+                  나타내며,
+                </p>
+                <p>영혼이 업에 따라 태어나는 고통의 길을 상징합니다.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 디지털 푸터 섹션 - background-container 안에 배치 -->
+      <section class="digital-footer-section">
+        <div class="footer-inner">
+          <div class="footer-header">
+            <h2>Digital Afterlife Records</h2>
+            <div class="view-toggle">
+              <button class="grid-btn">Grid</button>
+              <button class="list-btn active">List</button>
+            </div>
+          </div>
+          <ul class="footer-list">
+            <li>
+              <span class="footer-title">Department of Judgment</span>
+              <span class="footer-role"
+                >AI Ethical System / Data Processing</span
+              >
+              <span class="footer-link">View Records →</span>
+            </li>
+            <li>
+              <span class="footer-title">Office of Karma Transmission</span>
+              <span class="footer-role">Digital Traces Management</span>
+              <span class="footer-link">Access Portal →</span>
+            </li>
+            <li>
+              <span class="footer-title">Seven Judges Division</span>
+              <span class="footer-role"
+                >Behavioral Analytics / Memory Archive</span
+              >
+              <span class="footer-link">Open Files →</span>
+            </li>
+          </ul>
+          <div class="footer-credit">
+            <p>© 2025 DISAGU Digital Afterlife Corp. All Rights Reserved.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // 헤더는 항상 활성화 상태이므로 로고 클릭으로 토글하는 코드 제거
+
+      // 햄버거 메뉴 토글 (모바일용)
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLeft = document.querySelector(".nav-left");
+      const navRight = document.querySelector(".nav-right");
+
+      menuToggle.addEventListener("click", () => {
+        navLeft.classList.toggle("active");
+        navRight.classList.toggle("active");
+      });
+
+      // 메뉴 링크 클릭 시 모바일 메뉴 닫기
+      const navLinks = document.querySelectorAll(".nav-menu a");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 768) {
+            navLeft.classList.remove("active");
+            navRight.classList.remove("active");
+          }
+        });
+      });
+
+      // 스크롤 방향에 따라 로고 표시/숨김
+      let lastScrollY = window.scrollY;
+      const scrollThreshold = 100;
+
+      window.addEventListener("scroll", () => {
+        const currentY = window.scrollY;
+
+        if (currentY > scrollThreshold && currentY > lastScrollY) {
+          document.body.classList.add("logo-hidden");
+        } else if (currentY < lastScrollY || currentY <= scrollThreshold) {
+          document.body.classList.remove("logo-hidden");
+        }
+
+        lastScrollY = currentY;
+      });
+
+      // Hero 섹션 스크롤 애니메이션
+      document.addEventListener("DOMContentLoaded", function () {
+        const observerOptions = {
+          root: null,
+          rootMargin: "200px 200px 200px 200px",
+          threshold: 0.01,
+        };
+
+        const animateElements = (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("fade-in");
+            }
+          });
+        };
+
+        const observer = new IntersectionObserver(
+          animateElements,
+          observerOptions
+        );
+
+        // Circle 요소들 애니메이션
+        const circleItems = document.querySelectorAll(".circle-item");
+        const descriptionPs = document.querySelectorAll(".hero-description p");
+
+        const heroSection = document.querySelector(".hero");
+        if (heroSection) {
+          const checkHeroVisible = () => {
+            const rect = heroSection.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            if (isVisible) {
+              circleItems.forEach((item, index) => {
+                setTimeout(() => {
+                  item.classList.add("fade-in");
+                }, index * 200);
+              });
+              return true;
+            }
+            return false;
+          };
+
+          if (!checkHeroVisible()) {
+            const heroObserver = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    circleItems.forEach((item, index) => {
+                      setTimeout(() => {
+                        item.classList.add("fade-in");
+                      }, index * 200);
+                    });
+                    heroObserver.unobserve(entry.target);
+                  }
+                });
+              },
+              {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1,
+              }
+            );
+            heroObserver.observe(heroSection);
+          }
+        } else {
+          circleItems.forEach((item) => observer.observe(item));
+        }
+
+        descriptionPs.forEach((p) => observer.observe(p));
+      });
+
+      // 49재 섹션 스크롤 애니메이션
+      const ritualColumns = document.querySelectorAll(".ritual-column");
+      if (ritualColumns.length) {
+        const ritualObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, index) => {
+              if (entry.isIntersecting) {
+                setTimeout(() => {
+                  entry.target.classList.add("fade-in");
+                }, index * 150);
+                ritualObserver.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.2,
+          }
+        );
+
+        ritualColumns.forEach((column) => {
+          ritualObserver.observe(column);
+        });
+      }
+
+      // 푸터 스크롤 애니메이션
+      const footerInner = document.querySelector(
+        ".digital-footer-section .footer-inner"
+      );
+      if (footerInner) {
+        const footerObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                footerObserver.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1,
+          }
+        );
+
+        footerObserver.observe(footerInner);
+      }
+
+      // Grid/List 뷰 전환
+      const footerSection = document.querySelector(".digital-footer-section");
+      const gridBtn = document.querySelector(".grid-btn");
+      const listBtn = document.querySelector(".list-btn");
+
+      if (footerSection && gridBtn && listBtn) {
+        // 기본값은 list-view
+        footerSection.classList.add("list-view");
+
+        gridBtn.addEventListener("click", () => {
+          footerSection.classList.remove("list-view");
+          footerSection.classList.add("grid-view");
+          gridBtn.classList.add("active");
+          listBtn.classList.remove("active");
+        });
+
+        listBtn.addEventListener("click", () => {
+          footerSection.classList.remove("grid-view");
+          footerSection.classList.add("list-view");
+          listBtn.classList.add("active");
+          gridBtn.classList.remove("active");
+        });
+      }
+    </script>
+  </body>
+</html>

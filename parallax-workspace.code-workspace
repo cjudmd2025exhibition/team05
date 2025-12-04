@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../패럴랙스"
+		},
+		{
+			"path": "../웹사이트 수정본"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "웹사이트 수정본"
+	}
+}

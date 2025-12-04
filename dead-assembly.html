@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹사이트</title>
+    
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <link rel="stylesheet" href="dead-assembly-style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container active">
+            <nav class="nav nav-left">
+                <ul class="nav-menu">
+                    <li><a href="door.html">입구</a></li>
+                    <li><a href="about_main.html">사후기록</a></li>
+                </ul>
+            </nav>
+            <div class="logo">
+                <a href="#"><img src="image/header_Logo.png" alt="Logo"></a>
+            </div>
+            <nav class="nav nav-right">
+                <ul class="nav-menu">
+                    <li><a href="dead-assembly.html">망자집회</a></li>
+                    <li><a href="video.html">차안과 피안</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+    
+    <div class="background-container">
+        <!-- 타이틀 섹션 -->
+        <section class="title-section">
+            <div class="title-bg">
+                <img src="image/title_bg.png" alt="타이틀 배경">
+            </div>
+            <div class="title-caption">
+                <p>
+                    이곳은 망자의 흔적이 모이고, 생자의 시선이 닿는 경계의 자리입니다.<br>
+                    사라진 이들의 기록은 다시 빛으로 깨어나 저마다의 목소리로 자신을 증명합니다.<br>
+                    이곳에서 생자는 그들의 흔적을 바라보고, 저마다의 업을 마주하게 됩니다.
+                </p>
+            </div>
+            <div class="scroll-indicator" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </section>
+        
+        <!-- 웰컴 + 정보 카드 묶음 -->
+        <section id="welcome-info" class="welcome-info-section">
+            <div class="welcome-section">
+                <div class="welcome-text-container">
+                    <p class="welcome-line">어서오세요.</p>
+                    <p class="welcome-line">
+                        <span class="highlight">무형업보(無形業報)</span>에 오신걸
+                    </p>
+                    <p class="welcome-line">환영합니다.</p>
+                </div>
+            </div>
+            
+            <!-- 네 개의 정보 카드 섹션 -->
+            <div class="info-cards-section">
+                <div class="info-cards-wrapper">
+                    <div class="info-cards-container">
+                        <div class="info-card">
+                            <p class="info-card-text">
+                                전문가의 상담이<br>
+                                필요하신가요?<br><br>
+                                24시간 1:1 상담<br>
+                                상시 대기중입니다!
+                            </p>
+                        </div>
+                        <div class="info-card">
+                            <p class="info-card-text">
+                                아하! 그렇구나<br>
+                                변성대왕님 재판<br>
+                                배심원으로 들어가는거<br>
+                                힘들다던데 맞나요?
+                            </p>
+                        </div>
+                        <div class="info-card">
+                            <p class="info-card-text">
+                                저승국 CHOICE<br>
+                                ○○재판관님의 행운의<br>
+                                아이템은 업경 키링!
+                            </p>
+                        </div>
+                        <div class="info-card">
+                            <p class="info-card-text">
+                                저승국 성지<br>
+                                망자였던 내가 재판관<br>
+                                까지 갈 수 있었던<br>
+                                썰 푼다
+                            </p>
+                        </div>
+                        <!-- 카드 복제 (무한 루프용) -->
+                        <div class="info-card">
+                            <p class="info-card-text">
+                                전문가의 상담이<br>
+                                필요하신가요?<br><br>
+                                24시간 1:1 상담<br>
+                                상시 대기중입니다!
+                            </p>
+                        </div>
+                        <div class="info-card">
+                            <p class="info-card-text">
+                                아하! 그렇구나<br>
+                                변성대왕님 재판<br>
+                                배심원으로 들어가는거<br>
+                                힘들다던데 맞나요?
+                            </p>
+                        </div>
+                        <div class="info-card">
+                            <p class="info-card-text">
+                                저승국 CHOICE<br>
+                                ○○재판관님의 행운의<br>
+                                아이템은 업경 키링!
+                            </p>
+                        </div>
+                        <div class="info-card">
+                            <p class="info-card-text">
+                                저승국 성지<br>
+                                망자였던 내가 재판관<br>
+                                까지 갈 수 있었던<br>
+                                썰 푼다
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 망자집회 섹션 -->
+        <section id="gathering" class="gathering-section">
+            <div class="gathering-container">
+                <!-- 상단 제목 -->
+                <div class="gathering-header">
+                    <h1 class="gathering-title-kanji">(無形業報)</h1>
+                    <h2 class="gathering-title-subtitle">무형업보: Karma</h2>
+                </div>
+                
+                <!-- 망자 격자 -->
+                <div class="gathering-grid">
+                    <div class="gathering-card" data-card="1">
+                        <img src="image/dead_01.png" data-hover-src="image/dead_01_01.png" alt="망자 1" />
+                    </div>
+                    <div class="gathering-card" data-card="2">
+                        <img src="image/dead_02.png" data-hover-src="image/dead_02_02.png" alt="망자 2" />
+                    </div>
+                    <div class="gathering-card" data-card="3">
+                        <img src="image/dead_03.png" data-hover-src="image/dead_03_03.png" alt="망자 3" />
+                    </div>
+                    <div class="gathering-card" data-card="4">
+                        <img src="image/dead_04.png" data-hover-src="image/dead_04_04.png" alt="망자 4" />
+                    </div>
+                    <div class="gathering-card" data-card="5">
+                        <img src="image/dead_01.png" data-hover-src="image/dead_01_01.png" alt="망자 5" />
+                    </div>
+                    <div class="gathering-card" data-card="6">
+                        <img src="image/dead_02.png" data-hover-src="image/dead_02_02.png" alt="망자 6" />
+                    </div>
+                    <div class="gathering-card" data-card="7">
+                        <img src="image/dead_03.png" data-hover-src="image/dead_03_03.png" alt="망자 7" />
+                    </div>
+                    <div class="gathering-card" data-card="8">
+                        <img src="image/dead_04.png" data-hover-src="image/dead_04_04.png" alt="망자 8" />
+                    </div>
+                    <div class="gathering-card" data-card="9">
+                        <img src="image/dead_01.png" data-hover-src="image/dead_01_01.png" alt="망자 9" />
+                    </div>
+                    <div class="gathering-card" data-card="10">
+                        <img src="image/dead_02.png" data-hover-src="image/dead_02_02.png" alt="망자 10" />
+                    </div>
+                    <div class="gathering-card" data-card="11">
+                        <img src="image/dead_03.png" data-hover-src="image/dead_03_03.png" alt="망자 11" />
+                    </div>
+                    <div class="gathering-card" data-card="12">
+                        <img src="image/dead_04.png" data-hover-src="image/dead_04_04.png" alt="망자 12" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 망자 팝업 모달 -->
+        <div id="gathering-popup" class="gathering-popup">
+            <div class="popup-overlay"></div>
+            <div class="popup-content">
+                <button class="popup-close" aria-label="닫기">×</button>
+                
+                <!-- 메인 컨텐츠 영역 -->
+                <div class="popup-main">
+                    <!-- 본문 영역 -->
+                    <div class="popup-left">
+                        <!-- 작성자 정보 영역 -->
+                        <div class="popup-author">
+                            <div class="author-info">
+                                <h3 class="author-name" id="popup-author-name">망자명</h3>
+                                <div class="author-meta">
+                                    <span class="author-date" id="popup-author-date">인멸일시</span>
+                                    <span class="author-realm" id="popup-author-realm">소속</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 본문 영역 -->
+                        <div class="popup-body">
+                            <div class="popup-content-text" id="popup-content-text">
+                                <p class="popup-text">망자의 기록이 여기에 표시됩니다.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 댓글 영역 -->
+                        <div class="popup-comments">
+                            <h4 class="comments-title">반응</h4>
+                            <div class="comments-list" id="popup-comments-list">
+                                <!-- 댓글이 동적으로 추가됩니다 -->
+                            </div>
+                            
+                            <!-- 댓글 입력창 (슬라이드) -->
+                            <div class="comment-input-container" id="comment-input-container">
+                                <div class="comment-input-wrapper">
+                                    <input type="text" class="comment-input" id="comment-input" placeholder="댓글을 입력하세요..." />
+                                    <button class="comment-submit-btn" id="comment-submit-btn">작성</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 오른쪽: 세로형 탭 라벨 -->
+                    <div class="popup-right">
+                        <button class="popup-tab-btn" data-action="like">
+                            <span class="tab-text">공감</span>
+                        </button>
+                        <button class="popup-tab-btn" data-action="comment">
+                            <span class="tab-text">댓글</span>
+                        </button>
+                        <button class="popup-tab-btn" data-action="share">
+                            <span class="tab-text">스크랩</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 하트 애니메이션 컨테이너 -->
+        <div class="hearts-container" id="hearts-container"></div>
+        
+        <!-- 토스트 메시지 -->
+        <div class="toast-message" id="toast-message">
+            <span class="toast-text">기록보관소에 저장되었습니다.</span>
+        </div>
+        
+        <!-- 업의 산 + 푸터 섹션 -->
+        <section class="mountain-footer-wrap">
+            <div class="digital-mountain-section">
+                <div class="mountain-overlay"></div>
+                <img src="image/mon.png" alt="" aria-hidden="true">
+            </div>
+            <section class="digital-footer-section">
+                <div class="footer-inner">
+                    <div class="footer-header">
+                        <h2>Digital Afterlife Records</h2>
+                        <div class="view-toggle">
+                            <button class="grid-btn">Grid</button>
+                            <button class="list-btn active">List</button>
+                        </div>
+                    </div>
+                    <ul class="footer-list">
+                        <li>
+                            <span class="footer-title">Department of Judgment</span>
+                            <span class="footer-role">AI Ethical System / Data Processing</span>
+                            <span class="footer-link">View Records →</span>
+                        </li>
+                        <li>
+                            <span class="footer-title">Office of Karma Transmission</span>
+                            <span class="footer-role">Digital Traces Management</span>
+                            <span class="footer-link">Access Portal →</span>
+                        </li>
+                        <li>
+                            <span class="footer-title">Seven Judges Division</span>
+                            <span class="footer-role">Behavioral Analytics / Memory Archive</span>
+                            <span class="footer-link">Open Files →</span>
+                        </li>
+                    </ul>
+                    <div class="footer-credit">
+                        <p>© 2025 DISAGU Digital Afterlife Corp. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+    
+    <script>
+        // 헤더는 항상 활성화 상태이므로 로고 클릭으로 토글하는 코드 제거
+        
+        // 햄버거 메뉴 토글 (모바일용)
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLeft = document.querySelector('.nav-left');
+        const navRight = document.querySelector('.nav-right');
+        
+        menuToggle.addEventListener('click', () => {
+            navLeft.classList.toggle('active');
+            navRight.classList.toggle('active');
+        });
+        
+        // 메뉴 링크 클릭 시 모바일 메뉴 닫기
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLeft.classList.remove('active');
+                    navRight.classList.remove('active');
+                }
+            });
+        });
+
+        // 스크롤 방향에 따라 로고 표시/숨김
+        let lastScrollY = window.scrollY;
+        const scrollThreshold = 100;
+
+        window.addEventListener('scroll', () => {
+            const currentY = window.scrollY;
+
+            if (currentY > scrollThreshold && currentY > lastScrollY) {
+                document.body.classList.add('logo-hidden');
+            } else if (currentY < lastScrollY || currentY <= scrollThreshold) {
+                document.body.classList.remove('logo-hidden');
+            }
+
+            lastScrollY = currentY;
+        });
+        
+        // 초기 스크롤 잠금
+        document.body.classList.add('scroll-locked');
+
+        let scrollUnlocked = false;
+        let autoScrolling = false;
+
+        const welcomeInfoSection = document.getElementById('welcome-info');
+        const updateWelcomeTop = () => {
+            if (!welcomeInfoSection) return;
+            const rect = welcomeInfoSection.getBoundingClientRect();
+            const docTop = window.scrollY || window.pageYOffset;
+            welcomeInfoSection.dataset.lockTop = rect.top + docTop;
+        };
+
+        // Hero 섹션 스크롤 애니메이션
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '200px 200px 200px 200px',
+                threshold: 0.01
+            };
+
+            const animateElements = (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(animateElements, observerOptions);
+
+            // Circle 요소들 애니메이션
+            const circleItems = document.querySelectorAll('.circle-item');
+            const descriptionPs = document.querySelectorAll('.hero-description p');
+            
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                const checkHeroVisible = () => {
+                    const rect = heroSection.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    if (isVisible) {
+                        circleItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('fade-in');
+                            }, index * 200);
+                        });
+                        return true;
+                    }
+                    return false;
+                };
+                
+                if (!checkHeroVisible()) {
+                    const heroObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                circleItems.forEach((item, index) => {
+                                    setTimeout(() => {
+                                        item.classList.add('fade-in');
+                                    }, index * 200);
+                                });
+                                heroObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, {
+                        root: null,
+                        rootMargin: '0px',
+                        threshold: 0.1
+                    });
+                    heroObserver.observe(heroSection);
+                }
+            } else {
+                circleItems.forEach(item => observer.observe(item));
+            }
+            
+            const titleSection = document.querySelector('.title-section');
+            if (titleSection) {
+                const titleObserver = new IntersectionObserver((entries, observerInstance) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            titleSection.classList.add('is-visible');
+                            observerInstance.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    root: null,
+                    threshold: 0.2
+                });
+                
+                titleObserver.observe(titleSection);
+            }
+            
+            descriptionPs.forEach(p => observer.observe(p));
+            updateWelcomeTop();
+        });
+        
+        window.addEventListener('resize', updateWelcomeTop);
+
+        // Scroll indicator click → move to welcome/info section
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        if (scrollIndicator && welcomeInfoSection) {
+            const scrollToWelcome = () => {
+                document.body.classList.remove('scroll-locked');
+                scrollUnlocked = true;
+                autoScrolling = true;
+                updateWelcomeTop();
+                const lockTop = Number(welcomeInfoSection.dataset.lockTop || 0);
+                welcomeInfoSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                setTimeout(() => {
+                    updateWelcomeTop();
+                    autoScrolling = false;
+                }, 900);
+            };
+            
+            scrollIndicator.setAttribute('role', 'button');
+            scrollIndicator.setAttribute('tabindex', '0');
+            scrollIndicator.setAttribute('aria-label', '아래 섹션으로 이동');
+            
+            scrollIndicator.addEventListener('click', scrollToWelcome);
+            scrollIndicator.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    scrollToWelcome();
+                }
+            });
+        }
+
+        const enforceScrollLimit = () => {
+            if (!scrollUnlocked || autoScrolling || !welcomeInfoSection) return;
+            const lockTop = Number(welcomeInfoSection.dataset.lockTop || 0);
+            if (window.scrollY < lockTop) {
+                window.scrollTo({ top: lockTop, behavior: 'auto' });
+            }
+        };
+
+        window.addEventListener('scroll', enforceScrollLimit, { passive: true });
+        
+               // 49재 섹션 스크롤 애니메이션
+               const ritualColumns = document.querySelectorAll('.ritual-column');
+               if (ritualColumns.length) {
+                   const ritualObserver = new IntersectionObserver((entries) => {
+                       entries.forEach((entry, index) => {
+                           if (entry.isIntersecting) {
+                               setTimeout(() => {
+                                   entry.target.classList.add('fade-in');
+                               }, index * 150);
+                               ritualObserver.unobserve(entry.target);
+                           }
+                       });
+                   }, {
+                       root: null,
+                       rootMargin: '0px',
+                       threshold: 0.2
+                   });
+                   
+                   ritualColumns.forEach(column => {
+                       ritualObserver.observe(column);
+                   });
+               }
+               
+               // 망자 카드 순차 등장
+               const gatheringCardsForReveal = document.querySelectorAll('.gathering-card');
+               if (gatheringCardsForReveal.length) {
+                   const cardsObserver = new IntersectionObserver((entries, observerInstance) => {
+                       entries.forEach(entry => {
+                           if (entry.isIntersecting) {
+                               const cards = entry.target.querySelectorAll('.gathering-card');
+                               cards.forEach((card, idx) => {
+                                   setTimeout(() => {
+                                       card.classList.add('revealed');
+                                   }, idx * 60);
+                               });
+                               observerInstance.unobserve(entry.target);
+                           }
+                       });
+                   }, {
+                       root: null,
+                       threshold: 0.2
+                   });
+
+                   const gatheringGrid = document.querySelector('.gathering-grid');
+                   if (gatheringGrid) {
+                       cardsObserver.observe(gatheringGrid);
+                   }
+               }
+               
+               // 푸터 스크롤 애니메이션
+               const footerInner = document.querySelector('.digital-footer-section .footer-inner');
+               if (footerInner) {
+                   const footerObserver = new IntersectionObserver((entries) => {
+                       entries.forEach(entry => {
+                           if (entry.isIntersecting) {
+                               entry.target.classList.add('visible');
+                               footerObserver.unobserve(entry.target);
+                           }
+                       });
+                   }, {
+                       root: null,
+                       rootMargin: '0px',
+                       threshold: 0.1
+                   });
+                   
+                   footerObserver.observe(footerInner);
+               }
+               
+               // Grid/List 뷰 전환
+               const footerSection = document.querySelector('.digital-footer-section');
+               const gridBtn = document.querySelector('.grid-btn');
+               const listBtn = document.querySelector('.list-btn');
+               
+               if (footerSection && gridBtn && listBtn) {
+                   // 기본값은 list-view
+                   footerSection.classList.add('list-view');
+                   
+                   gridBtn.addEventListener('click', () => {
+                       footerSection.classList.remove('list-view');
+                       footerSection.classList.add('grid-view');
+                       gridBtn.classList.add('active');
+                       listBtn.classList.remove('active');
+                   });
+                   
+                   listBtn.addEventListener('click', () => {
+                       footerSection.classList.remove('grid-view');
+                       footerSection.classList.add('list-view');
+                       listBtn.classList.add('active');
+                       gridBtn.classList.remove('active');
+                   });
+               }
+               
+               // 망자 카드 호버 시 이미지 전환
+               const gatheringCardImages = document.querySelectorAll('.gathering-card img[data-hover-src]');
+               gatheringCardImages.forEach(img => {
+                   const defaultSrc = img.getAttribute('src');
+                   const hoverSrc = img.dataset.hoverSrc;
+
+                   if (!hoverSrc) return;
+
+                   img.dataset.defaultSrc = defaultSrc;
+
+                   const preload = new Image();
+                   preload.src = hoverSrc;
+
+                   const showHoverImage = () => {
+                       img.src = hoverSrc;
+                   };
+
+                   const restoreDefaultImage = () => {
+                       img.src = img.dataset.defaultSrc || defaultSrc;
+                   };
+
+                   img.addEventListener('mouseenter', showHoverImage);
+                   img.addEventListener('mouseleave', restoreDefaultImage);
+                   img.addEventListener('focus', showHoverImage);
+                   img.addEventListener('blur', restoreDefaultImage);
+
+                   img.addEventListener('touchstart', () => {
+                       showHoverImage();
+                       setTimeout(restoreDefaultImage, 250);
+                   }, {passive: true});
+               });
+
+               // 망자 카드별 데이터 정의
+               const cardData = {
+                   1: {
+                       name: "김철수",
+                       date: "2024.11.05 14:23",
+                       realm: "지옥도",
+                       content: "생전에 소셜미디어에서 수많은 악플을 남겼습니다. 타인의 고통을 즐기며 유포한 가짜뉴스가 수천 건에 달합니다. 디지털 흔적이 모두 기록되어 심판관 앞에 제시되었고, 그 결과 지옥도로 분류되었습니다.",
+                       comments: [
+                           { author: "이영희", text: "비슷한 경험을 한 망자로서 공감합니다. 디지털 업보는 정말 무섭네요.", date: "2024.11.06" },
+                           { author: "박민수", text: "저도 악플 때문에 고생했던 기억이... 조심하세요.", date: "2024.11.06" }
+                       ]
+                   },
+                   2: {
+                       name: "이영희",
+                       date: "2024.11.03 09:15",
+                       realm: "아귀도",
+                       content: "온라인 쇼핑몰에서 반품을 악용하여 수백 건의 부정 환불을 받았습니다. 작은 이익을 위해 거짓 신고를 반복했고, 그 모든 기록이 남아있었습니다. 아귀도에서 배고픔을 견뎌야 합니다.",
+                       comments: [
+                           { author: "최지훈", text: "반품 악용... 저도 비슷한 일을 했던 것 같아요. 후회됩니다.", date: "2024.11.04" },
+                           { author: "정수진", text: "디지털 흔적은 정말 지워지지 않네요.", date: "2024.11.04" }
+                       ]
+                   },
+                   3: {
+                       name: "박민수",
+                       date: "2024.10.28 16:42",
+                       realm: "축생도",
+                       content: "게임에서 계정 거래와 현금 거래를 통해 수백만 원의 부정 수익을 올렸습니다. 게임 내 경제를 교란시키고 다른 유저들을 속인 모든 행위가 기록되어 있습니다. 축생도에서 본능에 따라 살아야 합니다.",
+                       comments: [
+                           { author: "김철수", text: "게임도 업보가 있나봅니다...", date: "2024.10.29" },
+                           { author: "이영희", text: "저도 비슷한 경험이 있어서 공감이 갑니다.", date: "2024.10.29" }
+                       ]
+                   },
+                   4: {
+                       name: "최지훈",
+                       date: "2024.10.25 11:30",
+                       realm: "수라도",
+                       content: "온라인에서 지속적으로 타인과 경쟁하며 분쟁을 일으켰습니다. 댓글란에서 논쟁을 벌이고, 서로를 비방하는 글을 수백 건 작성했습니다. 수라도에서 끊임없는 경쟁에 시달려야 합니다.",
+                       comments: [
+                           { author: "박민수", text: "경쟁이 이렇게 무서운 줄 몰랐어요.", date: "2024.10.26" },
+                           { author: "정수진", text: "저도 비슷한 경험이 있습니다. 힘내세요.", date: "2024.10.26" }
+                       ]
+                   },
+                   5: {
+                       name: "정수진",
+                       date: "2024.10.20 20:18",
+                       realm: "인간도",
+                       content: "소셜미디어에서 타인의 사진을 무단으로 사용하고 허위 정보를 유포했습니다. 하지만 일부 선행도 있어 인간도로 재생할 기회를 받았습니다. 다음 생에서는 더 조심해야 합니다.",
+                       comments: [
+                           { author: "김철수", text: "재생 기회를 받으셨군요. 축하합니다!", date: "2024.10.21" },
+                           { author: "이영희", text: "다음 생에서는 더 나은 삶을 살 수 있을 거예요.", date: "2024.10.21" }
+                       ]
+                   },
+                   6: {
+                       name: "강민호",
+                       date: "2024.10.15 13:55",
+                       realm: "천상도",
+                       content: "온라인에서 지속적으로 선행을 베풀었습니다. 타인을 도와주는 댓글, 긍정적인 에너지를 전파하는 글들이 수천 건 기록되어 있습니다. 천상도에서 평화롭게 지낼 수 있습니다.",
+                       comments: [
+                           { author: "최지훈", text: "정말 존경스럽습니다. 천상도에서 행복하세요!", date: "2024.10.16" },
+                           { author: "정수진", text: "선행의 힘이 이렇게 큰 줄 몰랐어요.", date: "2024.10.16" }
+                       ]
+                   },
+                   7: {
+                       name: "윤서연",
+                       date: "2024.10.10 07:22",
+                       realm: "지옥도",
+                       content: "사이버 범죄에 가담하여 수많은 사람들의 개인정보를 유출했습니다. 피해자들의 고통을 생각하지 않고 이익만을 추구했습니다. 지옥도에서 그 고통을 직접 경험해야 합니다.",
+                       comments: [
+                           { author: "박민수", text: "개인정보 유출... 정말 심각한 범죄네요.", date: "2024.10.11" },
+                           { author: "강민호", text: "피해자들의 고통을 생각해보세요.", date: "2024.10.11" }
+                       ]
+                   },
+                   8: {
+                       name: "한지우",
+                       date: "2024.10.05 18:40",
+                       realm: "아귀도",
+                       content: "온라인 쇼핑에서 리뷰 조작을 통해 수백 건의 가짜 후기를 작성했습니다. 소비자들을 속이고 제품 판매에 기여했습니다. 아귀도에서 끝없는 갈망에 시달려야 합니다.",
+                       comments: [
+                           { author: "윤서연", text: "가짜 리뷰... 저도 한 적이 있어서 후회됩니다.", date: "2024.10.06" },
+                           { author: "최지훈", text: "소비자들을 속이는 행위는 정말 나쁩니다.", date: "2024.10.06" }
+                       ]
+                   },
+                   9: {
+                       name: "송다은",
+                       date: "2024.09.30 15:33",
+                       realm: "축생도",
+                       content: "인터넷에서 동물 학대 영상을 유포하고 공유했습니다. 생명을 경시하는 행위를 반복했고, 그 모든 기록이 남아있었습니다. 축생도에서 본능에 따라 살아야 합니다.",
+                       comments: [
+                           { author: "한지우", text: "동물 학대... 정말 끔찍한 일이에요.", date: "2024.10.01" },
+                           { author: "강민호", text: "생명을 소중히 여겨야 합니다.", date: "2024.10.01" }
+                       ]
+                   },
+                   10: {
+                       name: "임태현",
+                       date: "2024.09.25 12:07",
+                       realm: "수라도",
+                       content: "온라인 게임에서 치팅 프로그램을 사용하여 다른 유저들을 속였습니다. 공정한 경쟁을 방해하고 게임 환경을 해쳤습니다. 수라도에서 끊임없는 경쟁에 시달려야 합니다.",
+                       comments: [
+                           { author: "송다은", text: "치팅... 저도 비슷한 경험이 있어요.", date: "2024.09.26" },
+                           { author: "윤서연", text: "공정한 경쟁이 중요하죠.", date: "2024.09.26" }
+                       ]
+                   },
+                   11: {
+                       name: "오혜진",
+                       date: "2024.09.20 21:45",
+                       realm: "인간도",
+                       content: "소셜미디어에서 가끔 부정적인 댓글을 남겼지만, 대부분 선행을 베풀었습니다. 타인을 도와주고 긍정적인 에너지를 전파했습니다. 인간도로 재생할 기회를 받았습니다.",
+                       comments: [
+                           { author: "임태현", text: "재생 기회를 받으셨군요. 축하합니다!", date: "2024.09.21" },
+                           { author: "송다은", text: "다음 생에서는 더 나은 삶을 살 수 있을 거예요.", date: "2024.09.21" }
+                       ]
+                   },
+                   12: {
+                       name: "류준호",
+                       date: "2024.09.15 10:20",
+                       realm: "천상도",
+                       content: "온라인에서 지속적으로 지식과 정보를 나누고, 타인을 도와주는 활동을 했습니다. 교육 콘텐츠를 제작하고 긍정적인 영향력을 발휘했습니다. 천상도에서 평화롭게 지낼 수 있습니다.",
+                       comments: [
+                           { author: "오혜진", text: "정말 존경스러운 활동이었어요!", date: "2024.09.16" },
+                           { author: "임태현", text: "천상도에서 행복하세요!", date: "2024.09.16" }
+                       ]
+                   }
+               };
+
+               // 망자 카드 클릭 시 팝업 열기
+               const gatheringCards = document.querySelectorAll('.gathering-card');
+               const gatheringPopup = document.getElementById('gathering-popup');
+               const popupClose = document.querySelector('.popup-close');
+               const popupOverlay = document.querySelector('.popup-overlay');
+               
+               // 팝업에 데이터 표시 함수
+               function showPopupData(cardId) {
+                   const data = cardData[cardId];
+                   if (!data) return;
+                   
+                   // 작성자 정보
+                   document.getElementById('popup-author-name').textContent = data.name;
+                   document.getElementById('popup-author-date').textContent = data.date;
+                   document.getElementById('popup-author-realm').textContent = data.realm;
+                   
+                   // 본문 내용
+                   const contentText = document.getElementById('popup-content-text');
+                   contentText.innerHTML = `<p class="popup-text">${data.content}</p>`;
+                   
+                   // 댓글 목록
+                   const commentsList = document.getElementById('popup-comments-list');
+                   commentsList.innerHTML = '';
+                   data.comments.forEach(comment => {
+                       const commentItem = document.createElement('div');
+                       commentItem.className = 'comment-item';
+                       commentItem.innerHTML = `
+                           <div class="comment-header">
+                               <span class="comment-author">${comment.author}</span>
+                               <span class="comment-date">${comment.date}</span>
+                           </div>
+                           <p class="comment-text">${comment.text}</p>
+                       `;
+                       commentsList.appendChild(commentItem);
+                   });
+               }
+               
+               gatheringCards.forEach(card => {
+                   card.addEventListener('click', () => {
+                       const cardId = parseInt(card.getAttribute('data-card'));
+                       showPopupData(cardId);
+                       gatheringPopup.classList.add('active');
+                       document.body.style.overflow = 'hidden';
+                       document.body.classList.add('gathering-popup-open');
+                   });
+               });
+               
+               // 팝업 닫기
+               function closePopup() {
+                   gatheringPopup.classList.remove('active');
+                   document.body.style.overflow = '';
+                   document.body.classList.remove('gathering-popup-open');
+               }
+               
+               if (popupClose) {
+                   popupClose.addEventListener('click', closePopup);
+               }
+               
+               if (popupOverlay) {
+                   popupOverlay.addEventListener('click', closePopup);
+               }
+               
+               // ESC 키로 팝업 닫기
+               document.addEventListener('keydown', (e) => {
+                   if (e.key === 'Escape' && gatheringPopup.classList.contains('active')) {
+                       closePopup();
+                   }
+               });
+               
+               // 공감 버튼 클릭 시 하트 애니메이션
+               const likeBtn = document.querySelector('.popup-tab-btn[data-action="like"]');
+               const heartsContainer = document.getElementById('hearts-container');
+               
+               function createHeartAnimation(event) {
+                   // 클릭 지점 또는 팝업 중앙에서 생성
+                   const popupContent = document.querySelector('.popup-content');
+                   if (!popupContent) return;
+                   
+                   const rect = popupContent.getBoundingClientRect();
+                   let centerX, centerY;
+                   
+                   // 클릭 이벤트가 있으면 클릭 지점 사용, 없으면 팝업 중앙 사용
+                   if (event && event.clientX && event.clientY) {
+                       centerX = event.clientX;
+                       centerY = event.clientY;
+                   } else {
+                       centerX = rect.left + rect.width / 2;
+                       centerY = rect.top + rect.height / 2;
+                   }
+                   
+                   // 10-15개의 하트 생성 (물결감을 위해 약간의 지연)
+                   const heartCount = Math.floor(Math.random() * 6) + 10;
+                   
+                   for (let i = 0; i < heartCount; i++) {
+                       setTimeout(() => {
+                           const heart = document.createElement('div');
+                           heart.className = 'floating-heart';
+                           heart.innerHTML = '💀';
+                           
+                           // 랜덤 속성
+                           const size = Math.random() * 24 + 24; // 24-48px
+                           const rotation = Math.random() * 360; // 0-360도
+                           const duration = Math.random() * 0.5 + 1; // 1-1.5초
+                           const delay = Math.random() * 0.15; // 0-0.15초 지연
+                           const xOffset = (Math.random() - 0.5) * 120; // -60 ~ 60px
+                           const yEnd = -Math.random() * 120 - 60; // -60 ~ -180px
+                           const scale = Math.random() * 0.3 + 0.7; // 0.7-1.0
+                           
+                           heart.style.fontSize = `${size}px`;
+                           heart.style.left = `${centerX}px`;
+                           heart.style.top = `${centerY}px`;
+                           heart.style.setProperty('--rotation', `${rotation}deg`);
+                           heart.style.setProperty('--duration', `${duration}s`);
+                           heart.style.setProperty('--x-offset', `${xOffset}px`);
+                           heart.style.setProperty('--y-end', `${yEnd}px`);
+                           heart.style.setProperty('--scale', scale);
+                           heart.style.animationDelay = `${delay}s`;
+                           
+                           heartsContainer.appendChild(heart);
+                           
+                           // 애니메이션 종료 후 제거
+                           setTimeout(() => {
+                               if (heart.parentNode) {
+                                   heart.remove();
+                               }
+                           }, (duration + delay) * 1000 + 100);
+                       }, i * 20); // 물결감을 위한 약간의 지연
+                   }
+               }
+               
+               if (likeBtn) {
+                   likeBtn.addEventListener('click', (e) => {
+                       createHeartAnimation(e);
+                   });
+               }
+               
+               // 댓글 버튼 클릭 시 입력창 슬라이드
+               const commentBtn = document.querySelector('.popup-tab-btn[data-action="comment"]');
+               const commentInputContainer = document.getElementById('comment-input-container');
+               const commentInput = document.getElementById('comment-input');
+               const commentSubmitBtn = document.getElementById('comment-submit-btn');
+               const commentsList = document.getElementById('popup-comments-list');
+               
+               function toggleCommentInput() {
+                   commentInputContainer.classList.toggle('active');
+                   if (commentInputContainer.classList.contains('active')) {
+                       setTimeout(() => commentInput.focus(), 300);
+                   }
+               }
+               
+               function addComment(text) {
+                   if (!text.trim()) return;
+                   
+                   const commentItem = document.createElement('div');
+                   commentItem.className = 'comment-item';
+                   const now = new Date();
+                   const dateStr = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, '0')}.${String(now.getDate()).padStart(2, '0')}`;
+                   commentItem.innerHTML = `
+                       <div class="comment-header">
+                           <span class="comment-author">방문자</span>
+                           <span class="comment-date">${dateStr}</span>
+                       </div>
+                       <p class="comment-text">${text}</p>
+                   `;
+                   
+                   commentsList.appendChild(commentItem);
+                   commentInput.value = '';
+                   commentInputContainer.classList.remove('active');
+                   
+                   // 스크롤을 새 댓글로 (입력창이 닫힌 후)
+                   setTimeout(() => {
+                       commentItem.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                   }, 100);
+               }
+               
+               if (commentBtn) {
+                   commentBtn.addEventListener('click', toggleCommentInput);
+               }
+               
+               if (commentSubmitBtn) {
+                   commentSubmitBtn.addEventListener('click', () => {
+                       addComment(commentInput.value);
+                   });
+               }
+               
+               if (commentInput) {
+                   commentInput.addEventListener('keypress', (e) => {
+                       if (e.key === 'Enter') {
+                           addComment(commentInput.value);
+                       }
+                   });
+               }
+               
+               // 스크랩 버튼 클릭 시 토스트 메시지
+               const shareBtn = document.querySelector('.popup-tab-btn[data-action="share"]');
+               const toastMessage = document.getElementById('toast-message');
+               
+               function showToast() {
+                   toastMessage.classList.add('show');
+                   setTimeout(() => {
+                       toastMessage.classList.remove('show');
+                   }, 2000);
+               }
+               
+               if (shareBtn) {
+                   shareBtn.addEventListener('click', showToast);
+               }
+               
+               // GSAP ScrollTrigger 등록
+               gsap.registerPlugin(ScrollTrigger);
+
+               const posterTitle = document.querySelector('#poster-title-section');
+               if (posterTitle) {
+                   const titleLines = posterTitle.querySelectorAll('.poster-title-diamond .line, .poster-title-diamond .engline');
+                   if (titleLines.length) {
+                       gsap.set(titleLines, {opacity: 0, y: 50});
+
+                       gsap.timeline({
+                           scrollTrigger: {
+                               trigger: posterTitle,
+                               start: 'top 75%',
+                               toggleActions: 'play none none reverse'
+                           }
+                       }).to(titleLines, {
+                           opacity: 1,
+                           y: 0,
+                           ease: 'power2.out',
+                           stagger: 0.2,
+                           duration: 1
+                       });
+                   }
+               }
+ 
+               const meetingPoster = document.querySelector('#meeting-poster');
+               if (meetingPoster) {
+                   const tlPoster = gsap.timeline({
+                       scrollTrigger: {
+                           trigger: meetingPoster,
+                           start: 'top 90%',
+                           end: 'bottom 60%',
+                           toggleActions: 'play none none reverse'
+                       }
+                   });
+                   
+                   tlPoster.fromTo('.poster-bottle', {opacity: 0, y: 60}, {opacity: 1, y: 0, duration: 1.2, ease: 'power2.out'})
+                     .fromTo('.poster-overlay', {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 1.2}, '-=0.8')
+                     .fromTo('.poster-bottom', {opacity: 0, y: 60}, {opacity: 1, y: 0, duration: 1.2}, '-=0.6');
+               }
+          </script>
+           
+           <!-- JavaScript -->
+           <script src="scroll-animation.js"></script>
+           <script src="js/six-realms-canvas.js"></script>
+</body>
+</html>
+

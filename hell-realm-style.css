@@ -1,0 +1,1774 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+html,
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* 헤더 */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 4;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+  transition: all 0.3s ease;
+  border: none;
+  /* 헤더 빈 영역은 클릭을 막지 않도록 */
+  pointer-events: none;
+}
+
+.header * {
+  pointer-events: auto;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 3rem; /* 2rem * 1.5 = 3rem */
+  position: relative;
+}
+
+/* 초기 상태: 네비게이션 숨김 */
+.nav {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease, transform 0.8s ease;
+}
+
+.nav-left {
+  justify-self: end;
+  transform: translateX(-30px);
+}
+
+.nav-right {
+  justify-self: start;
+  transform: translateX(30px);
+}
+
+/* 활성화 상태: 네비게이션 표시 */
+.header-container.active .nav {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.nav-menu li {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* 초기 상태: 각 메뉴 항목도 숨김 상태 */
+.header-container:not(.active) .nav-left .nav-menu li {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.header-container:not(.active) .nav-right .nav-menu li {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* 활성화 상태: 순차적 딜레이 적용 */
+.header-container.active .nav-left .nav-menu li:nth-child(1) {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.1s;
+}
+
+.header-container.active .nav-left .nav-menu li:nth-child(2) {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.2s;
+}
+
+.header-container.active .nav-right .nav-menu li:nth-child(1) {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.3s;
+}
+
+.header-container.active .nav-right .nav-menu li:nth-child(2) {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.4s;
+}
+
+.logo {
+  justify-self: center;
+  text-align: center;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.logo a {
+  display: inline-block;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.logo a img {
+  height: auto;
+  max-height: 40px;
+  width: auto;
+  display: block;
+}
+
+body.logo-hidden .logo {
+  opacity: 0;
+  transform: translateY(-24px);
+  pointer-events: none;
+}
+
+.logo a:hover {
+  opacity: 0.7;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 3.75rem; /* 2.5rem * 1.5 = 3.75rem */
+  align-items: center;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+body.logo-hidden .nav-menu {
+  opacity: 0;
+  transform: translateY(-18px);
+  pointer-events: none;
+}
+
+.nav-menu li a {
+  color: #f9f9f9;
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.nav-menu li a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #f9f9f9;
+  transition: width 0.3s ease;
+}
+
+.nav-menu li a:hover {
+  opacity: 0.7;
+}
+
+.nav-menu li a:hover::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 2px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.background-container {
+  width: 100vw;
+  position: relative;
+  min-height: 100vh; /* 최소 높이 설정 */
+  display: flex;
+  flex-direction: column; /* 세로 방향 배치 */
+  overflow-x: hidden;
+  background-color: #f9f9f9;
+  z-index: 1; /* 검은색 + 곡선 + 흰색 구조 */
+}
+
+/* bg.png 배경 텍스처 - 검은색/곡선/흰색 위에 */
+.background-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%; /* 컨테이너 높이에 맞춤 */
+  background-image: url("image/bg.png");
+  background-repeat: repeat;
+  background-size: 1920px auto; /* 원본 이미지 비율 유지하면서 크기 조정 */
+  background-position: top left;
+  z-index: 10; /* about 섹션 아래, 배경으로 표시 */
+  opacity: 0.2; /* 배경 이미지 투명도 */
+  mix-blend-mode: normal;
+  pointer-events: none;
+}
+
+/* 상단 영역 - 검정색 배경 */
+.top-section {
+  width: 100%;
+  background-color: #000000;
+  position: relative;
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center;
+  overflow: visible;
+  min-height: 100vh; /* 화면 전체 높이 사용 */
+  padding-top: clamp(
+    12rem,
+    18vw,
+    15rem
+  ); /* 헤더와의 간격 증가 - 검은색 영역 유지 */
+  min-height: fit-content;
+}
+
+/* 곡선 래퍼 - 검은색과 흰색 경계 */
+.curve-wrapper {
+  position: relative;
+  left: 0;
+  width: 100%;
+  height: 80vh; /* 곡선 높이 */
+  margin-top: 0;
+  z-index: 3; /* 배경 이미지보다 낮게 */
+  display: block;
+  background-color: transparent; /* 흰색 배경 제거 */
+}
+
+/* 반원형 곡선 SVG - 검정색 영역의 하단 경계 바로 아래 */
+.top-section-curve {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+  z-index: 4; /* 배경 이미지보다 낮게 */
+}
+
+.top-section .content {
+  color: #f9f9f9;
+  text-align: center;
+  z-index: 3; /* 항상 최상단 */
+  position: relative;
+}
+
+.top-section h1 {
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.top-section p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  opacity: 0.8;
+  letter-spacing: 1px;
+}
+
+/* 하단 영역 - 오프 화이트 배경 */
+.bottom-section {
+  width: 100%;
+  min-height: auto; /* 콘텐츠에 맞게 자동 조정 */
+  background-color: transparent; /* 배경 완전 제거 */
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0; /* 하단 여백 제거 - 푸터가 끝에 배치되도록 */
+  overflow: visible; /* 콘텐츠가 보이도록 */
+}
+
+/* 흰색 배경 제거 */
+.bottom-section::after {
+  display: none; /* 완전히 제거 */
+}
+
+.bottom-section .content {
+  color: #1a1a1a;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 2rem;
+  z-index: 3; /* 항상 최상단 */
+  position: relative;
+}
+
+.bottom-section h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: #2d2d2d;
+}
+
+.bottom-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #4a4a4a;
+  font-weight: 300;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 1rem 1.5rem;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+  }
+
+  .logo {
+    order: 1;
+    justify-self: center;
+  }
+
+  .nav-left,
+  .nav-right {
+    display: none;
+  }
+
+  .nav.active {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 1.5rem 0;
+    z-index: 5;
+  }
+
+  .nav.active .nav-menu {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 2rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+    order: 2;
+    justify-self: end;
+  }
+
+  .top-section {
+    height: 800vh;
+  }
+
+  .top-section h1 {
+    font-size: 2rem;
+  }
+
+  .top-section p {
+    font-size: 1rem;
+  }
+
+  .bottom-section h2 {
+    font-size: 2rem;
+  }
+
+  .bottom-section p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-section h1 {
+    font-size: 1.5rem;
+  }
+
+  .top-section p {
+    font-size: 0.9rem;
+  }
+
+  .bottom-section {
+    padding-top: 2rem;
+  }
+
+  .bottom-section h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* 화면 전체를 채우도록 설정 - 양옆 여백 제거 */
+.background-container {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+/* ======================
+   Hero Section
+====================== */
+:root {
+  --red: #fd0101;
+  --black: #000000;
+}
+
+/* Custom Font */
+@font-face {
+  font-family: "ChillHuoSong";
+  src: url("../웹사이트 원본/font/ChillHuoSong_F_ConRegular.otf")
+    format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.hero {
+  position: relative;
+  background: transparent;
+  border: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: visible;
+  z-index: 20; /* 배경 이미지보다 위에 */
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: fit-content;
+}
+
+.hero-inner {
+  position: relative;
+  width: 100%;
+  z-index: 21; /* hero보다 위에 */
+}
+
+.hero-stage {
+  position: relative;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  z-index: 22; /* hero-inner보다 위에 */
+}
+
+.hero-core {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  z-index: 23; /* hero-stage보다 위에 */
+  width: 100%;
+  background: transparent;
+  border: none;
+}
+
+/* Hero 텍스트 */
+.hero-subtitle {
+  line-height: 1.1;
+  letter-spacing: 2px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.hero-subtitle-top {
+  color: var(--red);
+  font-weight: 300;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.hero-subtitle-middle {
+  font-size: 40px;
+  color: var(--red);
+  font-weight: 700;
+  margin: 5px 0 50px 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.hero-hanja-text {
+  width: clamp(320px, 34vw, 640px);
+  height: clamp(400px, 45vw, 800px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(0.8rem, 1.4vw, 2.2rem);
+  margin-top: clamp(1rem, 3vw, 2.6rem);
+  font-family: 'ZenAntiqueSoft', 'Noto Serif KR', serif;
+  font-size: clamp(5.7rem, 9.75vw, 13.5rem);
+  font-weight: 400 !important; /* 폰트 두께 명시적으로 설정 (상속 방지) */
+  letter-spacing: 0.12em;
+  color: var(--red);
+  text-align: center;
+  filter: drop-shadow(0 0 18px rgba(253,1,1,.35));
+  position: relative;
+  z-index: 24; /* hero-core보다 위에 */
+}
+
+.hero-hanja-text span {
+  display: block;
+  line-height: 1;
+}
+
+/* Circles */
+.core-orbits {
+  position: relative;
+  width: 100%;
+  min-height: 800px;
+  pointer-events: none;
+  z-index: 25; /* hero-hanja-image보다 위에 */
+}
+
+.core-orbits .circle-item {
+  position: absolute;
+  pointer-events: auto;
+}
+
+.core-orbits .circle-item.left {
+  top: -50%;
+  left: calc(50% - 850px);
+}
+.core-orbits .circle-item.right {
+  top: -50%;
+  left: calc(50% + 850px);
+}
+.core-orbits .circle-item.bottom {
+  top: calc(100% - 600px);
+  left: 50%;
+}
+
+.core-orbits .circle-item.left {
+  transform: translate(-50%, -50%) translateY(30px);
+}
+.core-orbits .circle-item.right {
+  transform: translate(-50%, -50%) translateY(30px);
+}
+.core-orbits .circle-item.bottom {
+  transform: translate(-50%, 0) translateY(30px);
+}
+
+.core-orbits .circle-item.left.fade-in {
+  transform: translate(-50%, -50%) translateY(0);
+}
+.core-orbits .circle-item.right.fade-in {
+  transform: translate(-50%, -50%) translateY(0);
+}
+.core-orbits .circle-item.bottom.fade-in {
+  transform: translate(-50%, 0) translateY(0);
+}
+
+.circle-item {
+  position: relative;
+  width: 550px;
+  height: 550px;
+  border: 4px solid var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--red);
+  font-weight: 700;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0 1px rgba(217, 0, 0, 0.25) inset;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease, background 0.2s ease,
+    color 0.2s ease;
+  box-sizing: border-box;
+  max-width: 450px;
+  max-height: 450px;
+  overflow: visible;
+}
+
+.circle-item::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 105%;
+  height: 105%;
+  background: radial-gradient(
+      circle,
+      transparent 40%,
+      rgba(217, 0, 0, 0.2) 70%,
+      transparent 85%
+    ),
+    radial-gradient(circle at 30% 70%, rgba(217, 0, 0, 0.1) 0%, transparent 35%),
+    radial-gradient(circle at 70% 30%, rgba(217, 0, 0, 0.1) 0%, transparent 35%),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(217, 0, 0, 0.08) 0%,
+      transparent 30%
+    );
+  background-color: rgba(217, 0, 0, 0.25);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(25px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+}
+
+.circle-item.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.circle-item span {
+  pointer-events: none;
+}
+
+.circle-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.circle-text .hanja {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--red);
+  font-family: "ChillHuoSong", serif;
+  position: relative;
+  display: block;
+  white-space: nowrap;
+}
+
+.circle-text .label {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--red);
+  font-family: "Noto Sans KR", sans-serif;
+  position: relative;
+  display: block;
+  white-space: nowrap;
+}
+
+/* 왼쪽 원의 텍스트만 오른쪽으로 이동 */
+.core-orbits .circle-item.left .circle-text {
+  margin-left: 30px;
+}
+
+/* 오른쪽 원의 텍스트만 왼쪽으로 이동 */
+.core-orbits .circle-item.right .circle-text {
+  margin-right: 30px;
+  transform: translateX(-15px); /* 텍스트를 왼쪽으로 이동 */
+}
+
+.circle-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  pointer-events: auto; /* 링크 클릭 가능하도록 명시 */
+}
+
+.circle-link:hover {
+  transform: scale(1.05);
+}
+
+.circle-link:active {
+  transform: scale(0.95);
+}
+
+.circle-item:hover {
+  background: var(--red);
+  color: #fff;
+}
+
+.circle-item:hover::before {
+  opacity: 0.9;
+  filter: blur(40px);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.circle-item:hover .circle-text .hanja,
+.circle-item:hover .circle-text .label {
+  color: #fff;
+}
+
+/* Hero 하단 설명 */
+.hero-description {
+  position: relative;
+  margin-top: 200px;
+  /* 문단들을 세로로 쌓이도록 명시 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+  z-index: 26; /* 모든 hero 요소 중 최상위 */
+  padding-bottom: 100px;
+}
+
+.hero-description p {
+  color: var(--red);
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 2px 0;
+  font-weight: 300;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.hero-description p + p {
+  /* 문단 그룹 사이 간격 (스크린샷처럼 띄워 보이게) */
+  margin-top: 24px;
+}
+
+.hero-description p.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero 반응형 */
+@media (max-width: 1200px) {
+  .hero-hanja-image {
+    max-width: 95vw;
+  }
+
+  .core-orbits .circle-item.left {
+    left: calc(50% - 500px);
+  }
+
+  .core-orbits .circle-item.right {
+    left: calc(50% + 500px);
+  }
+
+  .circle-item {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 100px;
+  }
+
+  .hero-hanja-image {
+    max-width: 100%;
+    margin-top: -40px;
+  }
+
+  .hero-subtitle-middle {
+    font-size: 32px;
+    margin: 5px 0 30px 0;
+  }
+
+  .hero-core {
+    gap: 15px;
+  }
+
+  .hero-description {
+    top: calc(100% + 600px);
+    max-width: 95%;
+  }
+
+  .hero-description p {
+    font-size: 16px;
+  }
+
+  .core-orbits .circle-item.left {
+    left: calc(50% - 200px);
+  }
+
+  .core-orbits .circle-item.right {
+    left: calc(50% + 200px);
+  }
+
+  .core-orbits .circle-item.bottom {
+    top: calc(100% + 80px);
+  }
+
+  .circle-item {
+    width: 280px;
+    height: 280px;
+  }
+
+  .circle-text .hanja {
+    font-size: 32px;
+  }
+
+  .circle-text .label {
+    font-size: 22px;
+  }
+}
+
+/* ======================
+   About Section
+====================== */
+.about {
+  position: relative;
+  color: #111;
+  z-index: 20; /* hero 섹션과 동일한 레이어 위치 */
+  padding-top: 100px;
+  padding-bottom: 0; /* 하단 여백 제거 - 49재 섹션이 바로 이어짐 */
+  width: 100%;
+  background-color: transparent; /* 배경 제거 */
+  min-height: 100vh;
+}
+
+.about-title-section {
+  position: relative;
+  width: 100%;
+  margin-bottom: 40px;
+  min-height: 1200px; /* 충분한 높이 확보 */
+  margin-top: -400px; /* 더 위로 올리기 */
+  z-index: 21; /* hero-inner와 동일 */
+}
+
+/* About 섹션 텍스트는 스크롤 애니메이션으로 제어 */
+
+.group-right {
+  margin-top: 0; /* 위로 올리기 위해 margin-top 제거 */
+  position: absolute;
+  right: 60px;
+  top: 200px; /* 조금 더 아래로 내리기 */
+  text-align: right;
+  z-index: 22;
+}
+
+.group-right h2 {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  margin-bottom: 80px;
+}
+
+.group-right p {
+  color: #1a1a1a;
+  line-height: 1.8;
+  text-align: justify;
+  text-align-last: right;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.group-left {
+  position: absolute;
+  left: 60px;
+  top: 750px; /* 아래로 더 내리기 */
+  text-align: left;
+  z-index: 22;
+}
+
+.group-left h3 {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  margin-bottom: 80px;
+}
+
+.group-left p {
+  color: #383838;
+  line-height: 1.8;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+/* 임시 이미지 박스 */
+.temp-image-box {
+  position: absolute;
+  right: -850px;
+  top: 240px;
+  width: 550px;
+  height: 600px;
+  background-color: #f0f0f0;
+  border: 2px dashed #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 애니메이션 효과 추가 */
+.fade-text {
+  opacity: 1; /* 초기에는 보이도록 설정 */
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  font-weight: 600; /* 폰트 두께 추가 */
+}
+
+.fade-text.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-char {
+  opacity: 1; /* 초기에는 보이도록 설정 */
+  transform: translateY(0);
+  transition: all 0.6s ease;
+  transition-delay: calc(var(--char-index, 0) * 0.1s);
+}
+
+.animate-char.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-up-fade {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.slide-up-fade.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* About 섹션 요소들 초기 숨김 */
+.about .group-right h2 .red-box,
+.about .group-left h3 .red-box {
+  opacity: 1; /* 초기에는 보이도록 설정 */
+  transform: translateY(0);
+  transition: all 0.6s ease;
+  transition-delay: calc(var(--char-index, 0) * 0.1s);
+}
+
+.about .group-right p,
+.about .group-left p {
+  opacity: 1; /* 초기에는 보이도록 설정 */
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.about .temp-image-box,
+.about .placeholder {
+  opacity: 1; /* 초기에는 보이도록 설정 */
+  transform: translateY(0);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* About 섹션 fade-in 효과 */
+.about .group-right h2 .red-box.fade-in,
+.about .group-left h3 .red-box.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about .group-right p.fade-in,
+.about .group-left p.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about .temp-image-box.fade-in,
+.about .placeholder.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.red-text {
+  color: var(--red);
+  font-weight: 600;
+}
+
+/* 레드박스 */
+.red-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: var(--red);
+  border: 1.5px solid var(--red);
+  padding: 12px 20px;
+  line-height: 1;
+  text-align: center;
+  font-size: 48px;
+  font-weight: 900;
+}
+
+.red-box + .red-box {
+  margin-left: -1px;
+}
+
+/* 사십구재, 업의심판 레드박스의 윗변 제거 */
+.group-right h2 .red-box:nth-child(n + 8) {
+  border-top: none;
+}
+
+.group-left h3 .red-box:nth-child(n + 7) {
+  border-top: none;
+}
+
+/* Container */
+.container {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  position: relative;
+  z-index: 22;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.about-media {
+  position: relative;
+  width: 100%;
+  margin-top: 200px;
+}
+
+.placeholder {
+  width: 100%;
+  height: 400px;
+  background-color: #f0f0f0;
+  border: 2px dashed #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ======================
+   Digital Footer Section (from about_main)
+====================== */
+.digital-footer-section {
+  position: relative;
+  background: transparent;
+  color: #1a1a1a; /* 어두운 텍스트 색상 */
+  padding: clamp(6rem, 12vw, 8rem) 0 clamp(3rem, 6vw, 4rem);
+  z-index: 20;
+  overflow: visible;
+  margin-top: 0;
+  pointer-events: none;
+}
+
+.digital-footer-section .footer-inner {
+  pointer-events: auto;
+}
+
+.footer-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1400px, 90vw);
+  margin: 0 auto;
+  font-family: "Noto Sans KR", sans-serif;
+  opacity: 0; /* 초기에는 숨김 */
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.footer-inner.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15); /* 어두운 테두리 */
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.footer-header h2 {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #1a1a1a; /* 어두운 텍스트 */
+}
+
+.view-toggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.view-toggle button {
+  background: none;
+  border: none;
+  color: #666666; /* 중간 회색 */
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.view-toggle button.active,
+.view-toggle button:hover {
+  opacity: 1;
+  color: #000000; /* 검은색 */
+}
+
+.footer-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-list li {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* 어두운 테두리 */
+  padding: 1.2rem 0;
+  transition: background 0.3s ease;
+}
+
+.footer-list li:hover {
+  background: rgba(0, 0, 0, 0.03); /* 어두운 호버 배경 */
+}
+
+.footer-title {
+  font-weight: 600;
+  color: #1a1a1a; /* 어두운 텍스트 */
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.footer-role {
+  font-size: 0.9rem;
+  color: #666666; /* 중간 회색 */
+}
+
+.footer-link {
+  font-size: 0.9rem;
+  text-align: right;
+  color: #fd0101; /* 빨간색 유지 */
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+}
+
+.footer-credit {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  color: #666666; /* 중간 회색 */
+}
+
+/* Grid/List 뷰 전환을 위한 클래스 */
+.digital-footer-section.list-view .footer-list {
+  grid-template-columns: 1fr;
+}
+
+.digital-footer-section.grid-view .footer-list {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.digital-footer-section.grid-view .footer-list li {
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.digital-footer-section.grid-view .footer-list li .footer-link {
+  text-align: left;
+}
+
+/* ======================
+   디지털 푸터 섹션 (흰색 배경용)
+====================== */
+.digital-footer-section {
+  position: relative;
+  background: transparent !important; /* 배경 투명 - 뒤의 bg 패턴이 보이도록 */
+  background-color: transparent !important; /* 배경색 투명 */
+  color: #1a1a1a; /* 흰색 배경에 맞게 어두운 텍스트 */
+  padding: clamp(6rem, 12vw, 8rem) 0 clamp(3rem, 6vw, 4rem);
+  z-index: 20;
+  overflow: visible;
+  margin-top: 0; /* margin-top 제거하여 자연스러운 간격 유지 */
+  margin-bottom: 0;
+  pointer-events: none;
+  width: 100%;
+}
+
+.digital-footer-section::before,
+.digital-footer-section::after {
+  display: none !important; /* 가상 요소 배경 제거 */
+}
+
+.digital-footer-section .footer-inner {
+  pointer-events: auto;
+  position: relative;
+  z-index: 2;
+  width: min(1400px, 90vw);
+  margin: 0 auto;
+  font-family: "Noto Sans KR", sans-serif;
+  opacity: 1; /* 초기값을 1로 설정하여 항상 보이도록 */
+  transform: translateY(0); /* 초기값을 0으로 설정 */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  background: transparent !important; /* 배경 투명 */
+  background-color: transparent !important; /* 배경색 투명 */
+}
+
+.digital-footer-section .footer-inner.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* 흰색 배경에 맞게 어두운 테두리 */
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.footer-header h2 {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #1a1a1a; /* 흰색 배경에 맞게 어두운 텍스트 */
+}
+
+.view-toggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.view-toggle button {
+  background: none;
+  border: none;
+  color: #666666; /* 흰색 배경에 맞게 회색 텍스트 */
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, color 0.3s ease;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.view-toggle button.active,
+.view-toggle button:hover {
+  opacity: 1;
+  color: #000000; /* 흰색 배경에 맞게 검은색 */
+}
+
+.footer-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-list li {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* 흰색 배경에 맞게 어두운 테두리 */
+  padding: 1.2rem 0;
+  transition: background 0.3s ease;
+}
+
+.footer-list li:hover {
+  background: rgba(0, 0, 0, 0.03); /* 흰색 배경에 맞게 어두운 호버 */
+}
+
+.footer-title {
+  font-weight: 600;
+  color: #1a1a1a; /* 흰색 배경에 맞게 어두운 텍스트 */
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.footer-role {
+  font-size: 0.9rem;
+  color: #666666; /* 흰색 배경에 맞게 회색 텍스트 */
+}
+
+.footer-link {
+  font-size: 0.9rem;
+  text-align: right;
+  color: #fd0101;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+}
+
+.footer-credit {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666666; /* 흰색 배경에 맞게 회색 텍스트 */
+  opacity: 0.8;
+}
+
+/* Grid/List 뷰 전환을 위한 클래스 */
+.digital-footer-section.list-view .footer-list {
+  grid-template-columns: 1fr;
+}
+
+.digital-footer-section.grid-view .footer-list {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.digital-footer-section.grid-view .footer-list li {
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.digital-footer-section.grid-view .footer-list li .footer-link {
+  text-align: left;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .footer-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .footer-list li {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .footer-link {
+    text-align: left;
+  }
+}
+
+/* ======================
+   49재 의미 설명 섹션
+====================== */
+.ritual-49-section {
+  position: relative;
+  width: 100%;
+  padding: clamp(8rem, 12vw, 10rem) 0 clamp(30rem, 40vw, 35rem) 0; /* 상단 padding 축소하여 위로 이동 */
+  background-color: transparent; /* 배경 제거 */
+  z-index: 20;
+  overflow: hidden;
+}
+
+.ritual-49-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(2rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 4개에서 3개로 변경 */
+  gap: clamp(2rem, 4vw, 4rem);
+  justify-items: center; /* 컬럼들을 중앙 정렬 */
+  justify-content: center; /* 그리드 자체를 중앙 정렬 */
+}
+
+.ritual-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.ritual-column.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ritual-hanja {
+  font-family: "ChillHuoSong", serif;
+  font-size: clamp(4rem, 8vw, 6rem);
+  font-weight: 900;
+  color: #fd0101;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(253, 1, 1, 0.3);
+}
+
+.ritual-description {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  flex: 1;
+  max-width: 70%; /* 텍스트 너비 더 제한하여 줄바꿈 유도 */
+}
+
+.ritual-description p {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  line-height: 1.8; /* 행간 원래대로 */
+  color: #383838;
+  margin: 0 0 1rem 0; /* 문단 간격 원래대로 */
+  font-weight: 400;
+}
+
+.ritual-image-placeholder {
+  width: 100%;
+  height: clamp(200px, 25vw, 300px);
+  background-color: #e8e8e8;
+  border: 2px dashed #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.ritual-image-placeholder::before {
+  content: "이미지 영역";
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.9rem;
+  color: #999999;
+}
+
+.ritual-column:hover .ritual-image-placeholder {
+  border-color: #fd0101;
+  background-color: #f5f5f5;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .ritual-49-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+
+  .ritual-hanja {
+    font-size: clamp(3rem, 10vw, 4rem);
+  }
+
+  .ritual-description p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .ritual-image-placeholder {
+    height: clamp(150px, 30vw, 200px);
+  }
+}
+
+/* ======================
+   Digital Hell Section
+====================== */
+/* 디지털 지옥도 살펴보기 섹션 */
+.digital-hell-section {
+  position: relative;
+  background: transparent;
+  /* 카드를 위로 올리기 위해 상단 여백 최소화 */
+  padding: 0 0 clamp(20rem, 28vw, 24rem);
+  margin-top: -300px; /* 더 아래로 내리기 */
+  z-index: 25; /* 다른 요소 위에 표시되도록 */
+  isolation: isolate;
+  pointer-events: none; /* 섹션 자체는 이벤트 차단 */
+}
+
+.digital-hell-section__title {
+  font-size: clamp(1.7rem, 2.9vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fd0101;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.6rem, 1.4vw, 1rem);
+  position: relative;
+  width: 100%;
+  padding: 0.35rem 0;
+  margin-bottom: clamp(4rem, 7vw, 5.5rem);
+  padding-left: clamp(1.25rem, 4.5vw, 5.5rem);
+  padding-right: clamp(1.25rem, 4.5vw, 5.5rem);
+}
+
+.digital-hell-section__title::after {
+  content: "";
+  flex: 1 1 auto;
+  border-bottom: 2px dotted #fd0101;
+  opacity: 0.85;
+  margin-left: clamp(0.4rem, 1vw, 0.8rem);
+}
+
+.hell-cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 25; /* 다른 요소 위에 표시되도록 */
+  pointer-events: auto; /* 마우스 이벤트를 받을 수 있도록 */
+}
+
+.hell-card {
+  width: 300px;
+  height: 450px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  border: none;
+  will-change: transform, opacity;
+  opacity: 1 !important; /* 이미지가 반투명하게 보이지 않도록 명시적 설정 */
+  pointer-events: auto; /* 마우스 이벤트를 받을 수 있도록 명시 */
+  z-index: 25; /* 다른 요소 위에 표시되도록 */
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  opacity: 1 !important; /* 이미지가 반투명하게 보이지 않도록 명시적 설정 */
+}
+
+.hell-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 0;
+  transition: box-shadow 0.3s ease;
+  outline: none;
+  border: none;
+}
+
+.card-front {
+  box-shadow: none;
+}
+
+.card-back {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.hell-card:hover .card-back {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.card-front {
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+}
+
+.card-back {
+  /* 배경을 투명하게 설정 */
+  background: transparent;
+  /* 뒷면(텍스트 + hell card 이미지 전체)을 위로 더 크게 올림 */
+  transform: rotateY(180deg) translateY(-460px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 텍스트를 카드 상단 쪽으로 배치 */
+  justify-content: flex-start;
+  padding: 0; /* padding 제거하여 흰색 면 제거 */
+  position: relative; /* hell card 이미지를 위한 기준 */
+  overflow: hidden; /* 주변 흰색 영역이 보이지 않도록 */
+  opacity: 1 !important; /* 이미지가 반투명하게 보이지 않도록 명시적 설정 */
+  backface-visibility: hidden; /* 카드가 뒤집혔을 때 앞면이 보이지 않도록 */
+}
+
+/* 지옥 카드 뒷면: 흰 네모 영역 안에 hell card1~4 이미지를 배치 (텍스트 뒤 배경) */
+.hell-card:nth-child(1) .card-back::before,
+.hell-card:nth-child(2) .card-back::before,
+.hell-card:nth-child(3) .card-back::before,
+.hell-card:nth-child(4) .card-back::before {
+  content: "";
+  position: absolute;
+  top: 0; /* 카드 전체를 덮도록 */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* y축을 300px 내려서 현재 위치보다 아래로 이동 */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; /* 전체 영역을 덮도록 */
+  opacity: 1 !important; /* 반투명하지 않도록 명시적 설정 */
+  z-index: 1; /* 텍스트(.card-title) 뒤 */
+  /* 이미지 영역만 표시, 주변은 투명 */
+}
+
+.hell-card:nth-child(1) .card-back::before {
+  background-image: url("inter image/hell card1.webp");
+  opacity: 1 !important;
+}
+
+.hell-card:nth-child(2) .card-back::before {
+  background-image: url("inter image/hell card2.webp");
+  opacity: 1 !important;
+}
+
+.hell-card:nth-child(3) .card-back::before {
+  background-image: url("inter image/hell card3.webp");
+  opacity: 1 !important;
+}
+
+.hell-card:nth-child(4) .card-back::before {
+  background-image: url("inter image/hell card4.webp");
+  opacity: 1 !important;
+}
+
+.card-title {
+  z-index: 2;
+  position: absolute;
+  top: 2%; /* 텍스트를 더 위로 올림 */
+  left: 50%;
+  transform: translate(-50%, 0); /* 가로 중앙 정렬 */
+  width: 100%; /* 전체 너비 */
+  text-align: center;
+  padding: 10px 20px 20px; /* 상단 여백 더 줄임 */
+  box-sizing: border-box;
+}
+
+.card-title .hanja {
+  font-family: "Noto Sans KR", serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fd0101;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+.card-title .korean {
+  font-size: 16px;
+  color: #ffffff; /* 지옥 이름 한글을 흰색으로 표시 */
+  font-weight: 400; /* 두께를 기본 굵기로 조정 */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.hell-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  position: relative;
+  overflow: visible;
+  display: block;
+  background-color: transparent; /* 부적_뱀 이미지 자체는 투명하게 유지 */
+  z-index: 1; /* 부적_뱀 이미지가 앞에 오도록 */
+}
+
+/* 각 지옥별 배경 이미지 */
+.sword-mountain {
+  background: url("image/sa.webp");
+  background-size: contain;
+  background-position: center top; /* 뒷면 이미지와 같은 기준선으로 정렬 */
+  background-repeat: no-repeat;
+}
+
+.boiling-soup {
+  background: url("image/sa.webp");
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.cold-ice {
+  background: url("image/sa.webp");
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.sword-tree {
+  background: url("image/sa.webp");
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.poison-snake {
+  background: url("image/sa.webp");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+  .hell-cards-container {
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  .hell-card {
+    width: 250px;
+    height: 375px;
+  }
+
+  .card-title .hanja {
+    font-size: 20px;
+  }
+
+  .card-title .korean {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hell-cards-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .hell-card {
+    width: 280px;
+    height: 420px;
+  }
+
+  .card-title .hanja {
+    font-size: 22px;
+  }
+
+  .card-title .korean {
+    font-size: 16px;
+  }
+}

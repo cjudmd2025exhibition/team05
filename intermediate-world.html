@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹사이트</title>
+    
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="intermediate-world-style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container active">
+            <nav class="nav nav-left">
+                <ul class="nav-menu">
+                    <li><a href="door.html">입구</a></li>
+                    <li><a href="about_main.html">사후기록</a></li>
+                </ul>
+            </nav>
+            <div class="logo">
+                <a href="#"><img src="image/header_Logo.png" alt="Logo"></a>
+            </div>
+            <nav class="nav nav-right">
+                <ul class="nav-menu">
+                    <li><a href="dead-assembly.html">망자집회</a></li>
+                    <li><a href="video.html">차안과 피안</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+    <div class="background-container">
+        <div class="top-section">
+            <!-- Hero Section -->
+            <section id="home" class="hero">
+                <div class="hero-inner">
+                    <div class="hero-stage">
+                        <div class="hero-core" aria-label="사십구재 중앙 텍스트">
+                            <div class="hero-subtitle hero-subtitle-top">불교에서 말하는 49일</div>
+                            <div class="hero-subtitle hero-subtitle-middle">중음세계</div>
+                            <div class="hero-hanja-text" aria-label="사십구재 한자 타이포">
+                                <span>中</span>
+                                <span>陰</span>
+                                <span>世</span>
+                                <span>界</span>
+                              </div>
+              
+                            <!-- Circles anchored to hero-core center/bottom -->
+                            <div class="core-orbits" aria-hidden="false">
+                                <a href="six-realms.html" class="circle-item left circle-link">
+                                    <div class="circle-text">
+                                        <div class="hanja">六道輪廻</div>
+                                        <div class="label">육도윤회</div>
+                                    </div>
+                                </a>
+                                <a href="hell-realm.html" class="circle-item right circle-link">
+                                    <div class="circle-text">
+                                        <div class="hanja">地獄道</div>
+                                        <div class="label">지옥도</div>
+                                    </div>
+                                </a>
+                                <a href="door.html" class="circle-item bottom circle-link">
+                                    <div class="circle-text">
+                                        <div class="hanja">四十九齋</div>
+                                        <div class="label">사십구재</div>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                            <!-- 하단 설명 텍스트 -->
+                            <div class="hero-description">
+                                <p>삶과 죽음 사이, 영혼이 머무는 과도기적 세계</p>
+                                <p>과거의 삶을 되돌아보고 새로운 길로 나아갈 준비를 한다.</p>
+                                <p>미련, 후회, 집착 등 인간적 감정이 마지막으로 흔들리는 곳, 이곳을 지나야 비로소 다음 세계로 향할 수 있다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- 곡선 래퍼 - 검은색과 흰색 경계 -->
+        <div class="curve-wrapper">
+            <svg class="top-section-curve" viewBox="0 0 100 400" preserveAspectRatio="none">
+                <!-- SVG 필터 정의 -->
+                <defs>
+                    <filter id="curveGlow" x="-100%" y="-50%" width="300%" height="200%">
+                        <!-- 메인 글로우 레이어 - 중앙 밝게 (블러 약 40px) -->
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="20" result="blur1"/>
+                        <feOffset in="blur1" dx="0" dy="10" result="offsetBlur1"/>
+                        <feFlood flood-color="#ffffff" flood-opacity="0.9" result="glowColor1"/>
+                        <feComposite in="glowColor1" in2="offsetBlur1" operator="in" result="glow1"/>
+                        
+                        <!-- 넓은 글로우 레이어 - 가장자리 fade-out (블러 약 60px) -->
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="30" result="blur2"/>
+                        <feOffset in="blur2" dx="0" dy="15" result="offsetBlur2"/>
+                        <feFlood flood-color="#ffffff" flood-opacity="0.7" result="glowColor2"/>
+                        <feComposite in="glowColor2" in2="offsetBlur2" operator="in" result="glow2"/>
+                        
+                        <!-- 가장 넓은 글로우 레이어 - 자연스러운 fade-out (블러 약 80px) -->
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="40" result="blur3"/>
+                        <feOffset in="blur3" dx="0" dy="20" result="offsetBlur3"/>
+                        <feFlood flood-color="#ffffff" flood-opacity="0.6" result="glowColor3"/>
+                        <feComposite in="glowColor3" in2="offsetBlur3" operator="in" result="glow3"/>
+                        
+                        <!-- 추가 강한 글로우 레이어 -->
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="15" result="blur4"/>
+                        <feOffset in="blur4" dx="0" dy="8" result="offsetBlur4"/>
+                        <feFlood flood-color="#ffffff" flood-opacity="1.0" result="glowColor4"/>
+                        <feComposite in="glowColor4" in2="offsetBlur4" operator="in" result="glow4"/>
+                        
+                        <!-- 초강력 글로우 레이어 -->
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="blur5"/>
+                        <feOffset in="blur5" dx="0" dy="5" result="offsetBlur5"/>
+                        <feFlood flood-color="#ffffff" flood-opacity="1.0" result="glowColor5"/>
+                        <feComposite in="glowColor5" in2="offsetBlur5" operator="in" result="glow5"/>
+                        
+                        <!-- 합성 - 가장 넓은 것부터 순서대로 -->
+                        <feMerge>
+                            <feMergeNode in="glow3"/>
+                            <feMergeNode in="glow2"/>
+                            <feMergeNode in="glow1"/>
+                            <feMergeNode in="glow4"/>
+                            <feMergeNode in="glow5"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <!-- 전체 영역 - 검은색 -->
+                <path d="M0,0 L0,150 Q50,400 100,150 L100,0 Z" fill="#000000"/>
+                <!-- 곡선 윤곽선만 - 글로우 효과 (바깥쪽으로) -->
+                <path class="curve-glow" d="M0,150 Q50,400 100,150" fill="none" stroke="#000000" stroke-width="5" vector-effect="non-scaling-stroke" filter="url(#curveGlow)"/>
+            </svg>
+        </div>
+        
+        <div class="bottom-section">
+            <!-- About Section -->
+            <section id="about" class="about section">
+                <!-- 제목과 설명 텍스트 - 두 그룹으로 분리 -->
+                <div class="about-title-section">
+                    <!-- 그룹 1: 오른쪽 정렬 -->
+                    <div class="group-right">
+                        <h2 class="red-box-title">
+                            <div class="red-box-line red-box-line--top">
+                                <span class="red-box animate-char">불</span>
+                                <span class="red-box animate-char">교</span>
+                                <span class="red-box animate-char">에</span>
+                                <span class="red-box animate-char">서</span>
+                                <span class="red-box animate-char">말</span>
+                                <span class="red-box animate-char">하</span>
+                                <span class="red-box animate-char">는</span>
+                            </div>
+                            <div class="red-box-line red-box-line--bottom">
+                                <span class="red-box animate-char">중</span>
+                                <span class="red-box animate-char">음</span>
+                                <span class="red-box animate-char">세</span>
+                                <span class="red-box animate-char">계</span>
+                            </div>
+                        </h2>
+                        <p class="fade-text">
+                            <span class="red-text">중음세계(中陰世界)는</span> 죽음과 다음 생 사이의 중간 상태를 뜻하며,<br/> 보통 49일 동안 지속된다고 본다.
+                        </p>
+                        
+                        <p class="fade-text">
+                            이 기간 동안 망자는 육신이 없는 의식체로 존재하며,<br/> 생전의 업(행위)에 따라 다양한 환영과 경험을 겪는다.
+                        </p>
+                        
+                        <p class="fade-text">
+                            선한 업은 평온하고 빛나는 세계를,<br/> 악한 업은 두렵고 괴로운 세계를 경험하게 된다.
+                        </p>
+
+                        <p class="fade-text">
+                            49일 동안 망자가 중음세계에 머물며 시왕의 심판을 받는다고 하며,</br> 업의 무게와 성질에 따라 육도윤회 중 한 곳으로 환생하게 된다고 전한다.
+                        </p>
+                    </div>
+
+                    <!-- 그룹 2: 왼쪽 정렬 -->
+                    <div class="group-left">
+                        <h3>
+                            <span class="red-box animate-char">디</span><span class="red-box animate-char">지</span><span class="red-box animate-char">털</span><span class="red-box animate-char">저</span><span class="red-box animate-char">승</span><span class="red-box animate-char">국</span><br/>
+                            <span class="red-box animate-char">로</span><span class="red-box animate-char">비</span>
+                        </h3>
+                        <p class="fade-text">
+                            <span class="red-text">디지털 저승국 로비</span>
+                        </p>
+                        
+                        <p class="fade-text fade-text-strong">
+                            현실에서 죽은 뒤 곧바로 가는 곳이 아니라,</br> 디지털 심판을 위한 대기 공간이다.
+                        </p>
+
+                        <p class="fade-text fade-text-strong">
+                            여기서 망자는 과거의 디지털 흔적이 재구성되고,</br> 판결 전까지 자신이 어떤 업을 쌓았는지 확인한다.
+                        </p>
+                </div>
+
+                    <!-- 이미지 레이아웃 - base 배경 위에 eye와 leaf 배치 -->
+                    <div class="inter-image-container">
+                        <img src="inter image/base1.webp" alt="Base 1" class="inter-base inter-base-1" />
+                        <img src="inter image/base2.webp" alt="Base 2" class="inter-base inter-base-2" />
+                        <img src="inter image/base3.webp" alt="Base 3" class="inter-base inter-base-3" />
+                        <img src="inter image/base4.webp" alt="Base 4" class="inter-base inter-base-4" />
+                        <img src="inter image/eye1.webp" alt="Eye 1" class="inter-eye inter-eye-1" />
+                        <img src="inter image/eye2.webp" alt="Eye 2" class="inter-eye inter-eye-2" />
+                        <img src="inter image/eye3.webp" alt="Eye 3" class="inter-eye inter-eye-3" />
+                        <img src="inter image/eye4.webp" alt="Eye 4" class="inter-eye inter-eye-4" />
+                        <img src="inter image/eye5.webp" alt="Eye 5" class="inter-eye inter-eye-5" />
+                        <img src="inter image/eye6.webp" alt="Eye 6" class="inter-eye inter-eye-6" />
+                        <img src="inter image/eye7.webp" alt="Eye 7" class="inter-eye inter-eye-7" />
+                        <img src="inter image/leaf1.webp" alt="Leaf 1" class="inter-leaf inter-leaf-1" />
+                        <img src="inter image/leaf2.webp" alt="Leaf 2" class="inter-leaf inter-leaf-2" />
+                        <img src="inter image/leaf3.webp" alt="Leaf 3" class="inter-leaf inter-leaf-3" />
+                        <img src="inter image/leaf4.webp" alt="Leaf 4" class="inter-leaf inter-leaf-4" />
+                        <img src="inter image/leaf5.webp" alt="Leaf 5" class="inter-leaf inter-leaf-5" />
+                        <img src="inter image/leaf6.webp" alt="Leaf 6" class="inter-leaf inter-leaf-6" />
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 49재 의미 설명 섹션 -->
+            <section id="ritual49" class="ritual-49-section">
+                <div class="ritual-49-container">
+                    <!-- 四 -->
+                    <div class="ritual-column" data-column="1">
+                        <div class="ritual-hanja">中</div>
+                        <div class="ritual-description">
+                            <p>중간, 사이, 중심을 의미
+                                <br>합니다.
+                                죽음과 다음 생 
+                                <br>사이,</p>
+                            <p>즉 삶과 사후 세계를 이어주는 중간 상태를 나타냅니다.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 十 -->
+                    <div class="ritual-column" data-column="2">
+                        <div class="ritual-hanja">陰</div>
+                        <div class="ritual-description">
+                            <p>그늘, 숨겨진 세계, 보이지 않는 영역을 뜻합니다. 
+                                <br>사람이 육체를</p>
+                            <p>떠난 뒤 경험하는 보이지 않는 영적 상태를 상징합니다.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 九 -->
+                    <div class="ritual-column" data-column="3">
+                        <div class="ritual-hanja">世</div>
+                        <div class="ritual-description">
+                            <p>죽음과 다음 생 사이 영혼이 머무는 중간 상태의 존재 공간. 이전 삶의 업과</p>
+                            <p>마음 상태를 되돌아보고 다음 생으로 나아가는 준비를 하는 상태입니다.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 齋 -->
+                    <div class="ritual-column" data-column="4">
+                        <div class="ritual-hanja">界</div>
+                        <div class="ritual-description">
+                            <p>계는 영혼이 업을 정화하고 깨달음으로 나아가는 길잡이 역할.</p>
+                            <p>죽음 이후에도 마음을 다스리고 올바른 방향으로 나아가도록 하는 수행적 의미를 갖습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- 디지털 푸터 섹션 - background-container 안에 배치 -->
+        <section class="digital-footer-section">
+            <div class="footer-inner">
+                <div class="footer-header">
+                    <h2>Digital Afterlife Records</h2>
+                    <div class="view-toggle">
+                        <button class="grid-btn">Grid</button>
+                        <button class="list-btn active">List</button>
+                    </div>
+                </div>
+                <ul class="footer-list">
+                    <li>
+                        <span class="footer-title">Department of Judgment</span>
+                        <span class="footer-role">AI Ethical System / Data Processing</span>
+                        <span class="footer-link">View Records →</span>
+                    </li>
+                    <li>
+                        <span class="footer-title">Office of Karma Transmission</span>
+                        <span class="footer-role">Digital Traces Management</span>
+                        <span class="footer-link">Access Portal →</span>
+                    </li>
+                    <li>
+                        <span class="footer-title">Seven Judges Division</span>
+                        <span class="footer-role">Behavioral Analytics / Memory Archive</span>
+                        <span class="footer-link">Open Files →</span>
+                    </li>
+                </ul>
+                <div class="footer-credit">
+                    <p>© 2025 DISAGU Digital Afterlife Corp. All Rights Reserved.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        // 헤더는 항상 활성화 상태이므로 로고 클릭으로 토글하는 코드 제거
+        
+        // 햄버거 메뉴 토글 (모바일용)
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLeft = document.querySelector('.nav-left');
+        const navRight = document.querySelector('.nav-right');
+        
+        menuToggle.addEventListener('click', () => {
+            navLeft.classList.toggle('active');
+            navRight.classList.toggle('active');
+        });
+        
+        // 메뉴 링크 클릭 시 모바일 메뉴 닫기
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLeft.classList.remove('active');
+                    navRight.classList.remove('active');
+                }
+            });
+        });
+
+        // 스크롤 방향에 따라 로고 표시/숨김
+        let lastScrollY = window.scrollY;
+        const scrollThreshold = 100;
+
+        window.addEventListener('scroll', () => {
+            const currentY = window.scrollY;
+
+            if (currentY > scrollThreshold && currentY > lastScrollY) {
+                document.body.classList.add('logo-hidden');
+            } else if (currentY < lastScrollY || currentY <= scrollThreshold) {
+                document.body.classList.remove('logo-hidden');
+            }
+
+            lastScrollY = currentY;
+        });
+        
+        // Hero 섹션 스크롤 애니메이션
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '200px 200px 200px 200px',
+                threshold: 0.01
+            };
+
+            const animateElements = (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(animateElements, observerOptions);
+
+            // Circle 요소들 애니메이션
+            const circleItems = document.querySelectorAll('.circle-item');
+            const descriptionPs = document.querySelectorAll('.hero-description p');
+            
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                const checkHeroVisible = () => {
+                    const rect = heroSection.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    if (isVisible) {
+                        circleItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('fade-in');
+                            }, index * 200);
+                        });
+                        return true;
+                    }
+                    return false;
+                };
+                
+                if (!checkHeroVisible()) {
+                    const heroObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                circleItems.forEach((item, index) => {
+                                    setTimeout(() => {
+                                        item.classList.add('fade-in');
+                                    }, index * 200);
+                                });
+                                heroObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, {
+                        root: null,
+                        rootMargin: '0px',
+                        threshold: 0.1
+                    });
+                    heroObserver.observe(heroSection);
+                }
+            } else {
+                circleItems.forEach(item => observer.observe(item));
+            }
+            
+            descriptionPs.forEach(p => observer.observe(p));
+        });
+        
+               // 49재 섹션 스크롤 애니메이션
+               const ritualColumns = document.querySelectorAll('.ritual-column');
+               if (ritualColumns.length) {
+                   const ritualObserver = new IntersectionObserver((entries) => {
+                       entries.forEach((entry, index) => {
+                           if (entry.isIntersecting) {
+                               setTimeout(() => {
+                                   entry.target.classList.add('fade-in');
+                               }, index * 150);
+                               ritualObserver.unobserve(entry.target);
+                           }
+                       });
+                   }, {
+                       root: null,
+                       rootMargin: '0px',
+                       threshold: 0.2
+                   });
+                   
+                   ritualColumns.forEach(column => {
+                       ritualObserver.observe(column);
+                   });
+               }
+               
+               // 푸터 스크롤 애니메이션
+               const footerInner = document.querySelector('.digital-footer-section .footer-inner');
+               if (footerInner) {
+                   const footerObserver = new IntersectionObserver((entries) => {
+                       entries.forEach(entry => {
+                           if (entry.isIntersecting) {
+                               entry.target.classList.add('visible');
+                               footerObserver.unobserve(entry.target);
+                           }
+                       });
+                   }, {
+                       root: null,
+                       rootMargin: '0px',
+                       threshold: 0.1
+                   });
+                   
+                   footerObserver.observe(footerInner);
+               }
+               
+               // Grid/List 뷰 전환
+               const footerSection = document.querySelector('.digital-footer-section');
+               const gridBtn = document.querySelector('.grid-btn');
+               const listBtn = document.querySelector('.list-btn');
+               
+               if (footerSection && gridBtn && listBtn) {
+                   // 기본값은 list-view
+                   footerSection.classList.add('list-view');
+                   
+                   gridBtn.addEventListener('click', () => {
+                       footerSection.classList.remove('list-view');
+                       footerSection.classList.add('grid-view');
+                       gridBtn.classList.add('active');
+                       listBtn.classList.remove('active');
+                   });
+                   
+                   listBtn.addEventListener('click', () => {
+                       footerSection.classList.remove('grid-view');
+                       footerSection.classList.add('list-view');
+                       listBtn.classList.add('active');
+                       gridBtn.classList.remove('active');
+                   });
+               }
+           </script>
+           
+           <script>
+               // 파란색 영역(group-right) 아래에 빨간색 박스 배치
+               document.addEventListener('DOMContentLoaded', function() {
+                   const groupRight = document.querySelector('.group-right');
+                   const tempImageBox = document.querySelector('.temp-image-box');
+                   const aboutTitleSection = document.querySelector('.about-title-section');
+                   
+                   if (groupRight && tempImageBox && aboutTitleSection) {
+                       // 모든 요소가 렌더링된 후 위치 계산
+                       setTimeout(function() {
+                           const groupRightRect = groupRight.getBoundingClientRect();
+                           const aboutTitleRect = aboutTitleSection.getBoundingClientRect();
+                           
+                           // group-right의 상대적 위치 계산 (about-title-section 기준)
+                           const groupRightTop = groupRightRect.top - aboutTitleRect.top;
+                           const groupRightHeight = groupRightRect.height;
+                           
+                           // 빨간색 박스를 파란색 영역 아래 100px 간격으로 배치
+                           const tempBoxTop = groupRightTop + groupRightHeight + 100;
+                           tempImageBox.style.top = tempBoxTop + 'px';
+                       }, 100);
+                   }
+               });
+           </script>
+           
+           <script>
+               // Eye 이미지들이 마우스 커서를 향해 회전 + 스크롤 시에는 추가 회전 애니메이션
+               document.addEventListener('DOMContentLoaded', function() {
+                   const eyeImages = document.querySelectorAll('.inter-eye');
+                   const eye4 = document.querySelector('.inter-eye-4');
+                   const hasEye4Translate = eye4 && window.getComputedStyle(eye4).transform.includes('translate');
+                   
+                   let lastMouseX = window.innerWidth / 2;
+                   let lastMouseY = window.innerHeight / 2;
+                   let cumulativeScrollSpin = 0;
+                   let spinClassTimeout = null;
+                   
+                   function rotateEyes(mouseX, mouseY) {
+                       eyeImages.forEach(eye => {
+                           const rect = eye.getBoundingClientRect();
+                           const eyeX = rect.left + rect.width / 2;
+                           const eyeY = rect.top + rect.height / 2;
+                           
+                           const angle = Math.atan2(mouseY - eyeY, mouseX - eyeX) * (180 / Math.PI);
+                           const finalAngle = angle + cumulativeScrollSpin;
+                           
+                           if (eye.classList.contains('inter-eye-4') && hasEye4Translate) {
+                               eye.style.transform = `translate(-50%, -50%) rotate(${finalAngle}deg)`;
+                           } else {
+                               eye.style.transform = `rotate(${finalAngle}deg)`;
+                           }
+                       });
+                   }
+                   
+                   function triggerScrollSpin() {
+                       const randomAngle = (Math.random() * 120) - 60; // -60° ~ +60°
+                       cumulativeScrollSpin += randomAngle;
+                       eyeImages.forEach(eye => eye.classList.add('scroll-spin'));
+                       
+                       if (spinClassTimeout) clearTimeout(spinClassTimeout);
+                       spinClassTimeout = setTimeout(() => {
+                           eyeImages.forEach(eye => eye.classList.remove('scroll-spin'));
+                       }, 650);
+                       
+                       rotateEyes(lastMouseX, lastMouseY);
+                   }
+                   
+                   document.addEventListener('mousemove', (e) => {
+                       lastMouseX = e.clientX;
+                       lastMouseY = e.clientY;
+                       rotateEyes(lastMouseX, lastMouseY);
+                   });
+                   
+                   document.addEventListener('scroll', () => {
+                       triggerScrollSpin();
+                   }, { passive: true });
+                   
+                   rotateEyes(lastMouseX, lastMouseY);
+               });
+           </script>
+</body>
+</html>

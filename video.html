@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웹사이트</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap"
+      rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="Video.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-container active">
+        <nav class="nav nav-left">
+          <ul class="nav-menu">
+            <li><a href="door.html">입구</a></li>
+            <li><a href="about_main.html">사후기록</a></li>
+          </ul>
+        </nav>
+        <div class="logo">
+          <a href="#"><img src="image/header_Logo.png" alt="Logo" /></a>
+        </div>
+        <nav class="nav nav-right">
+          <ul class="nav-menu">
+            <li><a href="dead-assembly.html">망자집회</a></li>
+            <li><a href="video.html">차안과 피안</a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle" aria-label="메뉴 열기">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+    <div class="background-container">
+      <div class="top-section">
+        <!-- 비디오 플레이어 섹션 -->
+        <section class="video-section">
+          <div class="video-container">
+            <video 
+              class="main-video" 
+              controls 
+              preload="metadata"
+              poster="">
+              <source src="video/ot.mp4" type="video/mp4">
+              브라우저가 비디오 태그를 지원하지 않습니다.
+            </video>
+          </div>
+        </section>
+      </div>
+
+      <div class="bottom-section">
+        <!-- 배경만 유지 -->
+      </div>
+
+      <!-- 디지털 푸터 섹션 - background-container 안에 배치 -->
+      <section class="digital-footer-section">
+        <div class="footer-inner">
+          <div class="footer-header">
+            <h2>Digital Afterlife Records</h2>
+            <div class="view-toggle">
+              <button class="grid-btn">Grid</button>
+              <button class="list-btn active">List</button>
+            </div>
+          </div>
+          <ul class="footer-list">
+            <li>
+              <span class="footer-title">Department of Judgment</span>
+              <span class="footer-role"
+                >AI Ethical System / Data Processing</span
+              >
+              <span class="footer-link">View Records →</span>
+            </li>
+            <li>
+              <span class="footer-title">Office of Karma Transmission</span>
+              <span class="footer-role">Digital Traces Management</span>
+              <span class="footer-link">Access Portal →</span>
+            </li>
+            <li>
+              <span class="footer-title">Seven Judges Division</span>
+              <span class="footer-role"
+                >Behavioral Analytics / Memory Archive</span
+              >
+              <span class="footer-link">Open Files →</span>
+            </li>
+          </ul>
+          <div class="footer-credit">
+            <p>© 2025 DISAGU Digital Afterlife Corp. All Rights Reserved.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // 햄버거 메뉴 토글 (모바일용)
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLeft = document.querySelector(".nav-left");
+      const navRight = document.querySelector(".nav-right");
+
+      if (menuToggle) {
+        menuToggle.addEventListener("click", () => {
+          navLeft.classList.toggle("active");
+          navRight.classList.toggle("active");
+        });
+      }
+
+      // 메뉴 링크 클릭 시 모바일 메뉴 닫기
+      const navLinks = document.querySelectorAll(".nav-menu a");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 768) {
+            navLeft.classList.remove("active");
+            navRight.classList.remove("active");
+          }
+        });
+      });
+
+      // 스크롤 방향에 따라 로고 표시/숨김
+      let lastScrollY = window.scrollY;
+      const scrollThreshold = 100;
+
+      window.addEventListener("scroll", () => {
+        const currentY = window.scrollY;
+
+        if (currentY > scrollThreshold && currentY > lastScrollY) {
+          document.body.classList.add("logo-hidden");
+        } else if (currentY < lastScrollY || currentY <= scrollThreshold) {
+          document.body.classList.remove("logo-hidden");
+        }
+
+        lastScrollY = currentY;
+      });
+
+      // 푸터 스크롤 애니메이션
+      const footerInner = document.querySelector(
+        ".digital-footer-section .footer-inner"
+      );
+      if (footerInner) {
+        const footerObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                footerObserver.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1,
+          }
+        );
+
+        footerObserver.observe(footerInner);
+      }
+
+      // Grid/List 뷰 전환
+      const footerSection = document.querySelector(".digital-footer-section");
+      const gridBtn = document.querySelector(".grid-btn");
+      const listBtn = document.querySelector(".list-btn");
+
+      if (footerSection && gridBtn && listBtn) {
+        // 기본값은 list-view
+        footerSection.classList.add("list-view");
+
+        gridBtn.addEventListener("click", () => {
+          footerSection.classList.remove("list-view");
+          footerSection.classList.add("grid-view");
+          gridBtn.classList.add("active");
+          listBtn.classList.remove("active");
+        });
+
+        listBtn.addEventListener("click", () => {
+          footerSection.classList.remove("grid-view");
+          footerSection.classList.add("list-view");
+          listBtn.classList.add("active");
+          gridBtn.classList.remove("active");
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹사이트</title>
+    
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="six-realms-style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container active">
+            <nav class="nav nav-left">
+                <ul class="nav-menu">
+                    <li><a href="door.html">입구</a></li>
+                    <li><a href="about_main.html">사후기록</a></li>
+                </ul>
+            </nav>
+            <div class="logo">
+                <a href="#"><img src="image/header_Logo.png" alt="Logo"></a>
+            </div>
+            <nav class="nav nav-right">
+                <ul class="nav-menu">
+                    <li><a href="dead-assembly.html">망자집회</a></li>
+                    <li><a href="video.html">차안과 피안</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+    <div class="background-container">
+        <div class="top-section">
+            <!-- Hero Section -->
+            <section id="home" class="hero">
+                <div class="hero-inner">
+                    <div class="hero-stage">
+                        <div class="hero-core" aria-label="사십구재 중앙 텍스트">
+                            <div class="hero-subtitle hero-subtitle-top">불교에서 말하는 49일</div>
+                            <div class="hero-subtitle hero-subtitle-middle">육도윤회</div>
+                            <div class="hero-hanja-text" aria-label="사십구재 한자 타이포">
+                                <span>六</span>
+                                <span>道</span>
+                                <span>輪</span>
+                                <span>廻</span>
+                            </div>
+
+                            <!-- Circles anchored to hero-core center/bottom -->
+                            <div class="core-orbits" aria-hidden="false">
+                                <a href="door.html" class="circle-item left circle-link">
+                                    <div class="circle-text">
+                                        <div class="hanja">四十九齋</div>
+                                        <div class="label">사십구재</div>
+                                    </div>
+                                </a>
+                                <a href="hell-realm.html" class="circle-item right circle-link">
+                                    <div class="circle-text">
+                                        <div class="hanja">地獄道</div>
+                                        <div class="label">지옥도</div>
+                                    </div>
+                                </a>
+                                <a href="intermediate-world.html" class="circle-item bottom circle-link">
+                                    <div class="circle-text">
+                                        <div class="hanja">中陰世界</div>
+                                        <div class="label">중음세계</div>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                            <!-- 하단 설명 텍스트 -->
+                            <div class="hero-description">
+                                <p>모든 중생이 업(業)에 따라 여섯 세계를 끝없이 돌고 도는 순환</p>
+                                <p>여섯 세계는 천상, 아수라, 인간, 축생, 아귀, 지옥으로 나뉜다.</p>
+                                <p>선한 업은 상위 세계로, 악한 업은 하위 세계로 이끈다.</p>
+                                <p>이 끝없는 윤회에서 벗어나는 것이 궁극적인 '해탈'의 길이다.</p>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- 곡선 래퍼 - 검은색과 흰색 경계 -->
+        <div class="curve-wrapper">
+            <svg class="top-section-curve" viewBox="0 0 100 400" preserveAspectRatio="none">
+                <!-- SVG 필터 정의 -->
+                <defs>
+                    <filter id="curveGlow" x="-100%" y="-50%" width="300%" height="200%">
+                        <!-- 메인 글로우 레이어 - 중앙 밝게 (블러 약 40px) -->
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="20" result="blur1"/>
+                        <feOffset in="blur1" dx="0" dy="10" result="offsetBlur1"/>
+                        <feFlood flood-color="#ffffff" flood-opacity="0.9" result="glowColor1"/>
+                        <feComposite in="glowColor1" in2="offsetBlur1" operator="in" result="glow1"/>
+                        
+                        <!-- 넓은 글로우 레이어 - 가장자리 fade-out (블러 약 60px) -->
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="30" result="blur2"/>
+                        <feOffset in="blur2" dx="0" dy="15" result="offsetBlur2"/>
+                        <feFlood flood-color="#ffffff" flood-opacity="0.7" result="glowColor2"/>
+                        <feComposite in="glowColor2" in2="offsetBlur2" operator="in" result="glow2"/>
+                        
+                        <!-- 가장 넓은 글로우 레이어 - 자연스러운 fade-out (블러 약 80px) -->
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="40" result="blur3"/>
+                        <feOffset in="blur3" dx="0" dy="20" result="offsetBlur3"/>
+                        <feFlood flood-color="#ffffff" flood-opacity="0.6" result="glowColor3"/>
+                        <feComposite in="glowColor3" in2="offsetBlur3" operator="in" result="glow3"/>
+                        
+                        <!-- 추가 강한 글로우 레이어 -->
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="15" result="blur4"/>
+                        <feOffset in="blur4" dx="0" dy="8" result="offsetBlur4"/>
+                        <feFlood flood-color="#ffffff" flood-opacity="1.0" result="glowColor4"/>
+                        <feComposite in="glowColor4" in2="offsetBlur4" operator="in" result="glow4"/>
+                        
+                        <!-- 초강력 글로우 레이어 -->
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="blur5"/>
+                        <feOffset in="blur5" dx="0" dy="5" result="offsetBlur5"/>
+                        <feFlood flood-color="#ffffff" flood-opacity="1.0" result="glowColor5"/>
+                        <feComposite in="glowColor5" in2="offsetBlur5" operator="in" result="glow5"/>
+                        
+                        <!-- 합성 - 가장 넓은 것부터 순서대로 -->
+                        <feMerge>
+                            <feMergeNode in="glow3"/>
+                            <feMergeNode in="glow2"/>
+                            <feMergeNode in="glow1"/>
+                            <feMergeNode in="glow4"/>
+                            <feMergeNode in="glow5"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <!-- 전체 영역 - 검은색 -->
+                <path d="M0,0 L0,150 Q50,400 100,150 L100,0 Z" fill="#000000"/>
+                <!-- 곡선 윤곽선만 - 글로우 효과 (바깥쪽으로) -->
+                <path class="curve-glow" d="M0,150 Q50,400 100,150" fill="none" stroke="#000000" stroke-width="5" vector-effect="non-scaling-stroke" filter="url(#curveGlow)"/>
+            </svg>
+        </div>
+        
+        <div class="bottom-section">
+            <!-- About Section -->
+            <section id="about" class="about section">
+                <!-- 제목과 설명 텍스트 - 두 그룹으로 분리 -->
+                <div class="about-title-section">
+                    <!-- 그룹 1: 오른쪽 정렬 -->
+                    <div class="group-right">
+                        <h2>
+                            <span class="red-box animate-char">디</span><span class="red-box animate-char">사</span><span class="red-box animate-char">구</span><span class="red-box animate-char">저</span><span class="red-box animate-char">승</span><span class="red-box animate-char">국</span><span class="red-box animate-char">의</span><br/>
+                            <span class="red-box animate-char">육</span><span class="red-box animate-char">도</span><span class="red-box animate-char">윤</span><span class="red-box animate-char">회</span>
+                        </h2>
+                        <p class="fade-text">
+                            삶과 죽음의 경계를 넘어, 인간이 남긴 모든 디지털 흔적은 저승국 데이터 서버에 저장된다. 댓글 하나,<br/> 
+                            좋아요 한 번, 무심코 남긴 공유까지 모두 업(業)으로 환산된다.
+                        </p>
+                        <p class="fade-text">
+                            이 기록들은 심판관에 의해 평가되고, 그 결과에 따라 영혼은 여섯 개의 차원으로 재분류된다.
+                        </p>
+                        <p class="fade-text">
+                            디지털 저승국의 윤회는 육체가 아닌, 데이터로 남은 진짜 당신을 기준으로 한다.
+                        </p>
+                    </div>
+
+                    <!-- 그룹 2: 왼쪽 정렬 -->
+                    <div class="group-left">
+                        <h3>
+                            <span class="red-box animate-char">최</span><span class="red-box animate-char">종</span><span class="red-box animate-char">판</span><span class="red-box animate-char">결</span><br/>
+                            <span class="red-box animate-char">육</span><span class="red-box animate-char">도</span><span class="red-box animate-char">윤</span><span class="red-box animate-char">회</span><span class="red-box animate-char">처</span>
+                        </h3>
+                    </div>
+                </div>
+
+                <!-- 육도윤회 인터랙티브 섹션 -->
+                <div class="six-realms-container">
+                    <canvas id="six-realms-canvas"></canvas>
+                </div>
+
+                <!-- 회색 박스 - 아래로 배치 -->
+                <div class="container">
+                    <div class="about-media">
+                        <div class="placeholder slide-up-fade"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- 업의 산 섹션 -->
+        <section class="digital-mountain-section">
+            <!-- 디지털 푸터 섹션 -->
+            <section class="digital-footer-section">
+                <div class="footer-inner">
+                    <div class="footer-header">
+                        <h2>Digital Afterlife Records</h2>
+                        <div class="view-toggle">
+                            <button class="grid-btn">Grid</button>
+                            <button class="list-btn active">List</button>
+                        </div>
+                    </div>
+                    <ul class="footer-list">
+                        <li>
+                            <span class="footer-title">Department of Judgment</span>
+                            <span class="footer-role">AI Ethical System / Data Processing</span>
+                            <span class="footer-link">View Records →</span>
+                        </li>
+                        <li>
+                            <span class="footer-title">Office of Karma Transmission</span>
+                            <span class="footer-role">Digital Traces Management</span>
+                            <span class="footer-link">Access Portal →</span>
+                        </li>
+                        <li>
+                            <span class="footer-title">Seven Judges Division</span>
+                            <span class="footer-role">Behavioral Analytics / Memory Archive</span>
+                            <span class="footer-link">Open Files →</span>
+                        </li>
+                    </ul>
+                    <div class="footer-credit">
+                        <p>© 2025 DISAGU Digital Afterlife Corp. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+    
+    <script>
+        // 헤더는 항상 활성화 상태이므로 로고 클릭으로 토글하는 코드 제거
+        
+        // 햄버거 메뉴 토글 (모바일용)
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLeft = document.querySelector('.nav-left');
+        const navRight = document.querySelector('.nav-right');
+        
+        menuToggle.addEventListener('click', () => {
+            navLeft.classList.toggle('active');
+            navRight.classList.toggle('active');
+        });
+        
+        // 메뉴 링크 클릭 시 모바일 메뉴 닫기
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLeft.classList.remove('active');
+                    navRight.classList.remove('active');
+                }
+            });
+        });
+
+        // 스크롤 방향에 따라 로고 표시/숨김
+        let lastScrollY = window.scrollY;
+        const scrollThreshold = 100;
+
+        window.addEventListener('scroll', () => {
+            const currentY = window.scrollY;
+
+            if (currentY > scrollThreshold && currentY > lastScrollY) {
+                document.body.classList.add('logo-hidden');
+            } else if (currentY < lastScrollY || currentY <= scrollThreshold) {
+                document.body.classList.remove('logo-hidden');
+            }
+
+            lastScrollY = currentY;
+        });
+        
+        // Hero 섹션 스크롤 애니메이션
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '200px 200px 200px 200px',
+                threshold: 0.01
+            };
+
+            const animateElements = (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(animateElements, observerOptions);
+
+            // Circle 요소들 애니메이션
+            const circleItems = document.querySelectorAll('.circle-item');
+            const descriptionPs = document.querySelectorAll('.hero-description p');
+            
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                const checkHeroVisible = () => {
+                    const rect = heroSection.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    if (isVisible) {
+                        circleItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('fade-in');
+                            }, index * 200);
+                        });
+                        return true;
+                    }
+                    return false;
+                };
+                
+                if (!checkHeroVisible()) {
+                    const heroObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                circleItems.forEach((item, index) => {
+                                    setTimeout(() => {
+                                        item.classList.add('fade-in');
+                                    }, index * 200);
+                                });
+                                heroObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, {
+                        root: null,
+                        rootMargin: '0px',
+                        threshold: 0.1
+                    });
+                    heroObserver.observe(heroSection);
+                }
+            } else {
+                circleItems.forEach(item => observer.observe(item));
+            }
+            
+            descriptionPs.forEach(p => observer.observe(p));
+        });
+        
+               // 49재 섹션 스크롤 애니메이션
+               const ritualColumns = document.querySelectorAll('.ritual-column');
+               if (ritualColumns.length) {
+                   const ritualObserver = new IntersectionObserver((entries) => {
+                       entries.forEach((entry, index) => {
+                           if (entry.isIntersecting) {
+                               setTimeout(() => {
+                                   entry.target.classList.add('fade-in');
+                               }, index * 150);
+                               ritualObserver.unobserve(entry.target);
+                           }
+                       });
+                   }, {
+                       root: null,
+                       rootMargin: '0px',
+                       threshold: 0.2
+                   });
+                   
+                   ritualColumns.forEach(column => {
+                       ritualObserver.observe(column);
+                   });
+               }
+               
+               // 푸터 스크롤 애니메이션
+               const footerInner = document.querySelector('.digital-footer-section .footer-inner');
+               if (footerInner) {
+                   const footerObserver = new IntersectionObserver((entries) => {
+                       entries.forEach(entry => {
+                           if (entry.isIntersecting) {
+                               entry.target.classList.add('visible');
+                               footerObserver.unobserve(entry.target);
+                           }
+                       });
+                   }, {
+                       root: null,
+                       rootMargin: '0px',
+                       threshold: 0.1
+                   });
+                   
+                   footerObserver.observe(footerInner);
+               }
+               
+               // Grid/List 뷰 전환
+               const footerSection = document.querySelector('.digital-footer-section');
+               const gridBtn = document.querySelector('.grid-btn');
+               const listBtn = document.querySelector('.list-btn');
+               
+               if (footerSection && gridBtn && listBtn) {
+                   // 기본값은 list-view
+                   footerSection.classList.add('list-view');
+                   
+                   gridBtn.addEventListener('click', () => {
+                       footerSection.classList.remove('list-view');
+                       footerSection.classList.add('grid-view');
+                       gridBtn.classList.add('active');
+                       listBtn.classList.remove('active');
+                   });
+                   
+                   listBtn.addEventListener('click', () => {
+                       footerSection.classList.remove('grid-view');
+                       footerSection.classList.add('list-view');
+                       listBtn.classList.add('active');
+                       gridBtn.classList.remove('active');
+                   });
+               }
+           </script>
+           
+           <!-- JavaScript -->
+           <script src="scroll-animation.js"></script>
+           <script src="six-realms-canvas.js"></script>
+</body>
+</html>
+
