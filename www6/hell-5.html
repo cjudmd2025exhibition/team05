@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/hell-5.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!----------커서 드래그--------->
+    <div class="hell-cursor" aria-hidden="true">
+      <span class="hell-cursor__upper"></span>
+      <span class="hell-cursor__lower"></span>
+      <span class="hell-cursor__text"
+        >눈을 꾹 눌러<br />위로 드래그 해주세요</span
+      >
+    </div>
+
+    <!----------페이지 트랜지션 박스---------->
+    <div class="page-transition-overlay"></div>
+
+    <!----------스크롤용 빈 박스---------->
+    <div class="empty"></div>
+
+    <!----------도산지옥 이미지 섹션---------->
+    <div class="content01">
+      <!--도산지옥 배경-->
+      <div class="hell-5-wrapper">
+        <img class="hell-5" src="./img/hell-5.png" alt="도산지옥-배경" />
+      </div>
+
+      <!--도산지옥 엔드 이미지-->
+      <div class="end-wrapper">
+        <img class="end back" src="./img/back.webp" alt="" />
+        <div class="red-circle"></div>
+        <img class="end end-eye" src="./img/end-eye.webp" alt="" />
+        <img class="end front" src="./img/front.webp" alt="" />
+        <img class="end end-hand1" src="./img/end-hand1.webp" alt="" />
+        <img class="end end-hand2" src="./img/end-hand2.webp" alt="" />
+        <img class="end end-hand3" src="./img/end-hand3.webp" alt="" />
+        <img class="end end-hand4" src="./img/end-hand4.webp" alt="" />
+        <img class="end end-hand5" src="./img/end-hand5.webp" alt="" />
+        <img class="end end-hand6" src="./img/end-hand6.webp" alt="" />
+        <img class="end end-hand7" src="./img/end-hand7.webp" alt="" />
+        <img class="end end-hand8" src="./img/end-hand8.webp" alt="" />
+        <img class="end end-hand9" src="./img/end-hand9.webp" alt="" />
+        <img class="end end-hand10" src="./img/end-hand10.webp" alt="" />
+        <img class="end end-hand11" src="./img/end-hand11.webp" alt="" />
+      </div>
+
+      <!--도산지옥 스크린-->
+      <div class="screen-wrapper">
+        <img class="screen left-screen" src="./img/screen-1.png" alt="" />
+        <img class="screen center-screen" src="./img/screen-2.png" alt="" />
+        <img class="screen right-screen" src="./img/screen-3.png" alt="" />
+      </div>
+
+      <!--도산지옥 주사위-->
+      <div class="die-wrapper">
+        <img class="die left-die" src="./img/die-4.png" alt="" />
+      </div>
+
+      <!--파장 애니메이션 컨테이너-->
+      <div class="ripple-container"></div>
+
+      <!--지옥 UI-->
+      <div class="hell-5-ui">
+        <!--지옥 UI 헤더-->
+        <div class="hell-5-ui-header">
+          <div class="ui-left">
+            <p class="rect-hint">실마리 - 빨간 스크린을 클릭해보세요</p>
+          </div>
+        </div>
+
+        <!--ui아이콘 클릭시 나오는 모달창-->
+        <div class="modal-overlay">
+          <div class="modal-content">
+            <button class="modal-close-btn">닫기</button>
+            <h2>발설지옥 <span class="title-chinese">拔舌地獄</span></h2>
+            <p>
+              이곳은 사재 발설지옥으로, 허위정보와 가짜뉴스의 죄업이 징의
+              울림처럼 증폭되어 돌아오는
+              <br />
+              형벌의 세계입니다. 망자는 사방을 둘러싼 거대한 징의 파동 속에서,
+              자신이 흘린 말 한 줄로
+              <br />
+              인해 끝없는 진동과 왜곡으로 번져 스스로를 옥죄는 형벌을 받게
+              됩니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!----------구름 부분---------->
+    <div class="content02">
+      <div class="ct02-cloud">
+        <img src="../img/cloud.jpg" alt="" />
+      </div>
+    </div>
+
+    <!----------자연스러운 트랜지션용 빈 박스---------->
+    <div class="bottom-empty"></div>
+
+    <!----------GSAP CORE---------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <!----------자바스크립트 파일---------->
+    <script src="../js/transition.js" defer></script>
+    <script src="../js/scroll-stopper.js" defer></script>
+    <script src="./js/hell-5.js"></script>
+  </body>
+</html>

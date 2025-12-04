@@ -1,0 +1,595 @@
+@font-face {
+  font-family: "Zen Antique Soft";
+  src: url("../../font/ZenAntiqueSoft-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*---------- 기본 스타일 ----------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Pretendard", sans-serif;
+  overflow-x: hidden;
+  background: #000;
+  color: #fff;
+}
+
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+::selection {
+  background: #fff;
+  color: #121212;
+}
+
+/*---------- 커서 드래그 ----------*/
+.hell-cursor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 10001;
+  --cursor-x: -9999px;
+  --cursor-y: -9999px;
+  --cursor-offset: 0px;
+  --cursor-lower-scale: 1;
+}
+
+.hell-cursor.is-active {
+  opacity: 1;
+}
+
+.hell-cursor__upper,
+.hell-cursor__lower {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  background: transparent;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%) scale(var(--cursor-scale, 1));
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hell-cursor__upper {
+  left: var(--cursor-x);
+  top: calc(var(--cursor-y) + var(--cursor-offset, 0px));
+  --cursor-scale: 1;
+}
+
+.hell-cursor__upper::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  pointer-events: none;
+  animation: rippleWave 2s ease-out infinite;
+}
+
+@keyframes rippleWave {
+  0% {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+  }
+  50% {
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+  }
+  100% {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+  }
+}
+
+.hell-cursor__lower {
+  left: var(--cursor-x-initial, var(--cursor-x));
+  top: calc(var(--cursor-y-initial, var(--cursor-y)) + 150px);
+  opacity: 0;
+  --cursor-scale: var(--cursor-lower-scale, 1);
+}
+
+.hell-cursor__text {
+  position: fixed;
+  left: calc(var(--cursor-x) + 30px);
+  top: var(--cursor-y);
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+  font-family: "Pretendard", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+.hell-cursor.is-pressed .hell-cursor__upper {
+  left: var(--cursor-x-initial, var(--cursor-x));
+  top: calc(
+    var(--cursor-y-initial, var(--cursor-y)) + var(--cursor-offset, 0px)
+  );
+  width: 20px;
+  height: 20px;
+  background: #ff0000;
+  border-color: #ff0000;
+  border-width: 1.5px;
+}
+
+.hell-cursor.is-pressed .hell-cursor__lower {
+  opacity: 0;
+}
+
+/*---------- 스크롤용 빈 박스 ----------*/
+.empty {
+  width: 100%;
+  height: 100svh;
+  background: #000;
+}
+
+.bottom-empty {
+  width: 100%;
+  height: 100svh;
+  background: #000;
+}
+
+/*---- 도산지옥 섹션 ----*/
+.content01 {
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+
+.hell-5-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hell-5-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0) 15%,
+    rgba(0, 0, 0, 0) 85%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hell-5-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0) 15%,
+    rgba(0, 0, 0, 0) 85%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/*---- 화탕지옥 wrapper ----*/
+.hell-5 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+.end-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+}
+
+.end-wrapper img {
+  object-fit: cover;
+}
+
+.end {
+  width: 270px;
+  position: absolute;
+}
+
+.end-wrapper .back {
+  width: 42%;
+  height: auto;
+  top: 20%;
+  left: 26%;
+  object-fit: contain;
+  animation: floating 3s ease-in-out infinite;
+}
+
+.red-circle {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 0, 0, 0);
+  background: rgba(255, 0, 0, 0.01); /* 거의 투명하지만 클릭 가능하도록 */
+  position: absolute;
+  top: 32%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: floatingWithX 3s ease-in-out infinite;
+  pointer-events: auto;
+  cursor: grab;
+  z-index: 3;
+}
+
+.red-circle:active {
+  cursor: grabbing;
+}
+
+.end-eye {
+  width: 320px;
+  top: 26%;
+  left: 49%;
+  transform: translateX(-50%);
+  animation: floatingWithX 3s ease-in-out infinite;
+  --eye-rotation: 0deg;
+}
+
+.front {
+  width: 520px;
+  top: 38%;
+  left: 52%;
+  transform: translateX(-50%);
+  animation: floatingWithX 3s ease-in-out infinite;
+}
+
+.end-hand1 {
+  width: 420px;
+  top: 80%;
+  left: 0%;
+}
+
+.end-hand2 {
+  width: 370px;
+  top: 65%;
+  left: 10%;
+}
+
+.end-hand3 {
+  width: 350px;
+  top: 50%;
+  left: 17%;
+}
+
+.end-hand4 {
+  width: 275px;
+  top: 72%;
+  left: 25%;
+}
+
+.end-hand5 {
+  width: 275px;
+  top: 77%;
+  left: 29%;
+}
+
+.end-hand6 {
+  width: 290px;
+  top: 63%;
+  left: 45%;
+}
+
+.end-hand7 {
+  width: 370px;
+  top: 45%;
+  right: 12%;
+}
+
+.end-hand8 {
+  width: 250px;
+  top: 85%;
+  right: 29%;
+}
+
+.end-hand9 {
+  width: 295px;
+  top: 70%;
+  right: 19%;
+}
+
+.end-hand10 {
+  width: 305px;
+  top: 78%;
+  right: 10%;
+}
+
+.end-hand11 {
+  width: 350px;
+  top: 60%;
+  left: 88%;
+  transform: translateX(-50%);
+}
+
+.screen-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  pointer-events: none; /* 래퍼는 이벤트 막고 */
+}
+
+.screen-wrapper img {
+  object-fit: cover;
+}
+
+.screen {
+  position: absolute;
+  animation: floating 2s ease-in-out infinite;
+  cursor: pointer;
+  z-index: 101; /* UI 위로 올려서 클릭 가능하게 */
+  pointer-events: auto; /* screen 이미지만 클릭 가능 */
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes floatingWithX {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0) rotate(var(--eye-rotation, 0deg));
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-30px)
+      rotate(var(--eye-rotation, 0deg));
+  }
+}
+
+.left-screen {
+  width: 242px;
+  top: 57%;
+  left: 54%;
+}
+
+.center-screen {
+  width: 200px;
+  top: 62%;
+  left: 61%;
+  transform: translateX(-50%);
+}
+
+.right-screen {
+  width: 168px;
+  top: 73%;
+  right: 33%;
+}
+
+.die-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.die-wrapper img {
+  object-fit: cover;
+}
+
+.die {
+  width: 245px;
+  position: absolute;
+  animation: floating 2s ease-in-out infinite;
+}
+
+.left-die {
+  top: 41%;
+  left: 43%;
+}
+
+/*---- 파장 애니메이션 ----*/
+.ripple-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.ripple-ellipse {
+  position: absolute;
+  width: 200px;
+  height: 150px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  transform-origin: center;
+  transform: rotate(20.892deg);
+  filter: blur(0px);
+  opacity: 1;
+}
+
+/*---- 저승 UI ----*/
+.hell-5-ui {
+  width: 100%;
+  height: 100svh;
+  position: absolute;
+  z-index: 50;
+  padding: 2svh 5svh;
+  display: flex;
+}
+
+.hell-5-ui-header {
+  width: 100%;
+  height: 10svh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+.ui-left {
+  position: relative;
+}
+
+.rect-hint {
+  padding-top: 10svh;
+  font-weight: 300;
+  transition: 0.5s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.ui-title {
+  vertical-align: middle;
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: 300;
+  cursor: default;
+}
+
+.ui-title::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #000;
+  z-index: -1;
+  transform: scale(3);
+  filter: blur(4px);
+}
+
+.title-chinese {
+  font-family: serif;
+}
+
+/*---------- 구름 부분 ----------*/
+.content02 {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.content02 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*-------- 모달창 --------*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 10000;
+}
+
+/* 모달 내부 박스 */
+.modal-content {
+  width: 45vw;
+  height: 25svh;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 40px 40px 60px 40px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  transform: translateY(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.modal-content .title-chinese {
+  font-size: 1.6rem;
+  font-weight: 50;
+  margin-left: 1px;
+  font-family: "Zen Antique Soft", serif;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  word-break: keep-all;
+}
+
+/* 닫기 버튼 */
+.modal-close-btn {
+  position: absolute;
+  border: none;
+  background: none;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  color: #666;
+}
