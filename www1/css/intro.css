@@ -1,0 +1,203 @@
+/*---------- 기본 스타일 ----------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Pretendard", sans-serif;
+  overflow-x: hidden;
+  background: #000;
+  color: #fff;
+}
+
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+::selection {
+  background: #fff;
+  color: #121212;
+}
+
+section {
+  width: 100%;
+  height: auto;
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*---------- 콘텐츠01 부분 ----------*/
+.content01 {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ct01-intro-container {
+  width: 100%;
+  height: auto;
+}
+
+.intro-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -999;
+}
+
+.ct01-guide {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/*---- 드래그 부분 ----*/
+.portal {
+  position: relative;
+  margin: 0 auto;
+  width: 320px;
+  height: 420px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  transform: translateY(30%);
+  transition: opacity 0.4s ease-out;
+  --line-base: 252px;
+  --drag-offset: 0px;
+  --line-fill: 252px;
+}
+
+.portal-line {
+  position: absolute;
+  width: 1px;
+  height: var(--line-fill);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 1) 0px,
+      rgba(255, 255, 255, 1) 1px,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0) 3px
+    );
+  opacity: 0.9;
+  left: 50%;
+  bottom: 84px;
+  transform: translateX(-50%);
+  transform-origin: bottom;
+}
+
+.portal-anchor {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  padding: 0;
+  cursor: grab;
+  touch-action: none;
+  background: none;
+}
+
+.portal-ring {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1000px;
+  pointer-events: none;
+}
+
+.portal-ring-outer {
+  width: 48px;
+  height: 48px;
+  border: solid 1px rgba(255, 255, 255, 0.3);
+  transform-origin: 50% 50%;
+  animation: pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+
+  70% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+  71% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+.portal-ring-inner {
+  width: 48px;
+  height: 48px;
+  border: solid 1px #fff;
+}
+
+.portal-ghost {
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border: 1px dotted #fff;
+  border-radius: 1000px;
+  opacity: 0.75;
+  transition: 0.3 ease;
+}
+
+.guide-desc {
+  color: #a9a9a9;
+  position: absolute;
+  letter-spacing: 0.3rem;
+  white-space: nowrap;
+  bottom: 7.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 300;
+}
+
+/*---------- 구름 부분 ----------*/
+.content02 {
+  width: 100%;
+  height: 100%;
+}
+
+.content02 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*---------- 기타 style ----------*/
+.empty {
+  width: 100%;
+  height: 100vh;
+}

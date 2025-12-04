@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/intro.css" />
+    <title>D49</title>
+  </head>
+  <body>
+    <!----------페이지 트랜지션 박스---------->
+    <div class="page-transition-overlay"></div>
+
+    <!----------인트로 화면 및 가이드 부분---------->
+    <section>
+      <div class="content01">
+        <img class="intro-bg" src="./img/intro.jpg" alt="intro-배경-이미지" />
+        <div class="ct01-intro-container">
+          <!--드래그 부분-->
+          <div class="portal">
+            <div class="portal-line"></div>
+            <button class="portal-anchor" type="button">
+              <span class="portal-ring portal-ring-outer"></span>
+              <span class="portal-ring portal-ring-inner"></span>
+            </button>
+            <div class="portal-ghost"></div>
+          </div>
+          <p class="guide-desc">동그라미를 아래로 끌어내려 저승의 문을 여세요</p>
+        </div>
+      </div>
+    </section>
+
+    <!----------구름 부분---------->
+    <div class="content02">
+      <div class="ct02-cloud">
+        <img src="../img/cloud.jpg" alt="" />
+      </div>
+    </div>
+
+    <!----------자연스러운 트랜지션용 빈 박스---------->
+    <div class="empty"></div>
+
+    <!----------GSAP CORE---------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <!----------자바스크립트 파일---------->
+    <script src="../js/transition.js" defer></script>
+    <script src="../js/scroll-stopper.js"></script>
+    <script src="./js/intro.js"></script>
+  </body>
+</html>
