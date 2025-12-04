@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/hell-3.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!----------커서 드래그--------->
+    <div class="hell-cursor" aria-hidden="true">
+      <span class="hell-cursor__upper"></span>
+      <span class="hell-cursor__lower"></span>
+    </div>
+
+    <!----------페이지 트랜지션 박스---------->
+    <div class="page-transition-overlay"></div>
+
+    <!----------스크롤용 빈 박스---------->
+    <div class="empty"></div>
+
+    <!----------도산지옥 이미지 섹션---------->
+    <div class="content01">
+      <!--도산지옥 배경-->
+      <div class="hell-3-wrapper">
+        <img class="hell-3" src="./img/hell-3.png" alt="도산지옥-배경" />
+      </div>
+
+      <!--도산지옥 캠-->
+      <div class="cam-wrapper">
+        <img class="cam left-cam" src="./img/cam.png" alt="" />
+      </div>
+
+      <!--도산지옥 얼굴-->
+      <div class="face-wrapper">
+        <img class="face left-face" src="./img/face-1.webp" alt="" />
+        <img class="face center-face" src="./img/face-2.webp" alt="" />
+        <img class="face right-face" src="./img/face-3.webp" alt="" />
+      </div>
+
+      <!--도산지옥 주사위-->
+      <div class="die-wrapper">
+        <img class="die left-die" src="./img/die.png" alt="" />
+      </div>
+
+      <!--지옥 UI-->
+      <div class="hell-3-ui">
+        <!--지옥 UI 헤더-->
+        <div class="hell-3-ui-header">
+          <div class="ui-left">
+            <img src="../img/main-logo.webp" alt="" />
+            <p class="rect-hint">실마리 - 빨간 화면 캠을 클릭해보세요</p>
+          </div>
+          <div class="ui-title">
+            <p>
+              디사구 한빙지옥 &#40;<span class="title-chinese">寒氷地獄</span
+              >&#41;
+            </p>
+          </div>
+          <div class="ui-icon">
+            <img
+              src="./img/icon3.webp"
+              alt=""
+              class="js-modal-trigger"
+              style="cursor: pointer" />
+          </div>
+        </div>
+
+        <!--ui아이콘 클릭시 나오는 모달창-->
+        <div class="modal-overlay">
+          <div class="modal-content">
+            <button class="modal-close-btn">닫기</button>
+            <h2>한빙지옥 <span class="title-chinese">寒氷地獄</span></h2>
+            <p>
+              이곳은 삼재 힌빙지옥으로, 딥페이크와 불법 사이트 악업의 망자들이
+              오는 지옥입니다.
+              <br />
+              눈앞의 얼음 거울은 망자의 얼굴을 낯설고 기괴한 모습으로 비추며,
+              타인의 정체성을
+              <br />
+              훼손한 죄가 결국 자신을 잃는업보로 되돌아오는 형벌의 세계입니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!----------구름 부분---------->
+    <div class="content02">
+      <div class="ct02-cloud">
+        <img src="../img/cloud.jpg" alt="" />
+      </div>
+    </div>
+
+    <!----------자연스러운 트랜지션용 빈 박스---------->
+    <div class="bottom-empty"></div>
+
+    <!----------GSAP CORE---------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <!----------자바스크립트 파일---------->
+    <script src="../js/transition.js" defer></script>
+    <script src="../js/scroll-stopper.js" defer></script>
+    <script src="./js/hell-3.js"></script>
+  </body>
+</html>
