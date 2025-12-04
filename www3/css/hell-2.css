@@ -1,0 +1,446 @@
+@font-face {
+  font-family: "Zen Antique Soft";
+  src: url("../../font/ZenAntiqueSoft-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*---------- 기본 스타일 ----------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Pretendard", sans-serif;
+  overflow-x: hidden;
+  background: #000;
+  color: #fff;
+}
+
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+::selection {
+  background: #fff;
+  color: #121212;
+}
+
+/*---------- 커서 드래그 ----------*/
+.hell-cursor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 10001;
+  --cursor-x: -9999px;
+  --cursor-y: -9999px;
+  --cursor-offset: 0px;
+  --cursor-lower-scale: 1;
+}
+
+.hell-cursor.is-active {
+  opacity: 1;
+}
+
+.hell-cursor__upper,
+.hell-cursor__lower {
+  position: fixed;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  background: transparent;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%) scale(var(--cursor-scale, 1));
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hell-cursor__upper {
+  left: var(--cursor-x);
+  top: calc(var(--cursor-y) + var(--cursor-offset, 0px));
+  --cursor-scale: 1;
+}
+
+.hell-cursor__lower {
+  left: var(--cursor-x-initial, var(--cursor-x));
+  top: calc(var(--cursor-y-initial, var(--cursor-y)) + 150px);
+  opacity: 0;
+  --cursor-scale: var(--cursor-lower-scale, 1);
+}
+
+.hell-cursor.is-pressed .hell-cursor__upper {
+  left: var(--cursor-x-initial, var(--cursor-x));
+  top: calc(
+    var(--cursor-y-initial, var(--cursor-y)) + var(--cursor-offset, 0px)
+  );
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-color: #fff;
+  border-width: 1.5px;
+}
+
+.hell-cursor.is-pressed .hell-cursor__lower {
+  opacity: 1;
+}
+
+/*---------- 스크롤용 빈 박스 ----------*/
+.empty {
+  width: 100%;
+  height: 100svh;
+  background: #000;
+}
+
+.bottom-empty {
+  width: 100%;
+  height: 100svh;
+  background: #000;
+}
+
+/*---- 도산지옥 섹션 ----*/
+.content01 {
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  position: relative;
+}
+
+.hell-2-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hell-2-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 15%,
+    rgba(0, 0, 0, 0) 85%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hell-2-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 15%,
+    rgba(0, 0, 0, 0) 85%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/*---- 화탕지옥 wrapper ----*/
+.hell-2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+.skull-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  pointer-events: none; /* wrapper는 클릭을 막지 않도록 */
+}
+
+.fire-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 52;
+}
+
+.skull-wrapper img {
+  object-fit: cover;
+}
+
+.skull {
+  width: 80px;
+  position: absolute;
+  transition: transform 0.3s ease;
+  pointer-events: auto;
+  z-index: 53; /* fire-particles (z-index: 52)보다 위에 위치 */
+}
+
+.skull.is-hovered {
+  animation: skullBounce 1s ease-in-out;
+}
+
+@keyframes skullBounce {
+  0% {
+    transform: scale(1) rotate(0deg) translateY(0);
+  }
+  25% {
+    transform: scale(1.07) rotate(-2deg) translateY(-8px);
+  }
+  50% {
+    transform: scale(0.96) rotate(2deg) translateY(-5px);
+  }
+  75% {
+    transform: scale(1.07) rotate(-2deg) translateY(-8px);
+  }
+  100% {
+    transform: scale(1) rotate(0deg) translateY(0);
+  }
+}
+
+.skull-1 {
+  top: 78%;
+  left: 49%;
+}
+
+.skull-2 {
+  top: 87%;
+  left: 58%;
+}
+
+.skull-3 {
+  top: 72%;
+  left: 70%;
+}
+
+.skull-4 {
+  top: 90%;
+  left: 40%;
+}
+
+.skull-5 {
+  top: 76%;
+  left: 56%;
+}
+
+.skull-6 {
+  top: 91%;
+  left: 61%;
+}
+
+.skull-7 {
+  top: 92%;
+  left: 24%;
+}
+
+.skull-8 {
+  top: 90%;
+  right: 40%;
+}
+
+.skull-9 {
+  top: 70%;
+  right: 5%;
+}
+
+/*---- 저승 UI ----*/
+.hell-2-ui {
+  width: 100%;
+  height: 100svh;
+  position: absolute;
+  z-index: 50;
+  padding: 2svh 5svh;
+  display: flex;
+}
+
+.hell-2-ui-header {
+  width: 100%;
+  height: 10svh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  pointer-events: auto;
+  position: relative;
+}
+
+.ui-left {
+  position: relative;
+}
+
+.ui-left img {
+  width: 150px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  object-fit: contain;
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 101;
+}
+
+.rect-hint {
+  padding-top: 10svh;
+  font-weight: 300;
+  transition: 0.5s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.ui-title {
+  vertical-align: middle;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  font-weight: 300;
+  cursor: default;
+}
+
+.ui-title::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #000;
+  z-index: -1;
+  transform: scale(3);
+  filter: blur(4px);
+}
+
+.title-chinese {
+  font-family: serif;
+}
+
+.ui-icon img {
+  width: 45px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.ui-icon img:hover {
+  transform: scale(1.1);
+}
+
+.ui-left img:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.ui-left img:hover + .rect-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*---------- 구름 부분 ----------*/
+.content02 {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.content02 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*-------- 모달창 --------*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; /* 초기 상태에서 pointer-events 비활성화 */
+  z-index: 10000;
+}
+
+/* 모달 내부 박스 */
+.modal-content {
+  width: 45vw;
+  height: 25svh;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 40px 40px 60px 40px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  transform: translateY(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.modal-content .title-chinese {
+  font-size: 1.6rem;
+  font-weight: 50;
+  margin-left: 1px;
+  font-family: "Zen Antique Soft", serif;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  word-break: keep-all;
+}
+
+/* 닫기 버튼 */
+.modal-close-btn {
+  position: absolute;
+  border: none;
+  background: none;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  color: #666;
+}

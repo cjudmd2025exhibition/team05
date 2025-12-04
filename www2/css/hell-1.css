@@ -1,0 +1,586 @@
+@font-face {
+  font-family: "Zen Antique Soft";
+  src: url("../../font/ZenAntiqueSoft-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*---------- 기본 스타일 ----------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Pretendard", sans-serif;
+  overflow-x: hidden;
+  background: #000;
+  color: #fff;
+}
+
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+::selection {
+  background: #fff;
+  color: #121212;
+}
+
+/*---------- 커서 드래그 ----------*/
+.hell-cursor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 10001;
+  --cursor-x: -9999px;
+  --cursor-y: -9999px;
+  --cursor-offset: 0px;
+  --cursor-lower-scale: 1;
+}
+
+.hell-cursor.is-active {
+  opacity: 1;
+}
+
+.hell-cursor__upper,
+.hell-cursor__lower {
+  position: fixed;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  background: transparent;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%) scale(var(--cursor-scale, 1));
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hell-cursor__upper {
+  left: var(--cursor-x);
+  top: calc(var(--cursor-y) + var(--cursor-offset, 0px));
+  --cursor-scale: 1;
+}
+
+.hell-cursor__lower {
+  left: var(--cursor-x-initial, var(--cursor-x));
+  top: calc(var(--cursor-y-initial, var(--cursor-y)) + 150px);
+  opacity: 0;
+  --cursor-scale: var(--cursor-lower-scale, 1);
+}
+
+.hell-cursor.is-pressed .hell-cursor__upper {
+  left: var(--cursor-x-initial, var(--cursor-x));
+  top: calc(
+    var(--cursor-y-initial, var(--cursor-y)) + var(--cursor-offset, 0px)
+  );
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-color: #fff;
+  border-width: 1.5px;
+}
+
+.hell-cursor.is-pressed .hell-cursor__lower {
+  opacity: 1;
+}
+
+/*---------- 스크롤용 빈 박스 ----------*/
+.empty {
+  width: 100%;
+  height: 100svh;
+  background: #000;
+}
+
+.bottom-empty {
+  width: 100%;
+  height: 100svh;
+  background: #000;
+}
+
+/*---- 도산지옥 섹션 ----*/
+.content01 {
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+
+.hell-1-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hell-1-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 15%,
+    rgba(0, 0, 0, 0) 85%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hell-1-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 15%,
+    rgba(0, 0, 0, 0) 85%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  z-index: 3;
+  pointer-events: none;
+}
+
+/*---- 도산지옥 wrapper ----*/
+.hell-1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+.fire-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.fire-wrapper img {
+  object-fit: cover;
+}
+
+.fire {
+  width: 270px;
+  position: absolute;
+  animation: floating 2s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.left-fire {
+  top: 20%;
+  left: 30%;
+}
+
+.right-fire {
+  top: 40%;
+  right: 18%;
+}
+
+/*---- 저승 UI ----*/
+.hell-1-ui {
+  width: 100%;
+  height: 100svh;
+  position: absolute;
+  z-index: 50;
+  padding: 2svh 5svh;
+  display: flex;
+}
+
+.hell-1-ui-header {
+  width: 100%;
+  height: 10svh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  pointer-events: auto;
+  position: relative;
+}
+
+.ui-left {
+  position: relative;
+}
+
+.ui-left img {
+  width: 150px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  object-fit: contain;
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 101;
+}
+
+.rect-hint {
+  padding-top: 10svh;
+  font-weight: 300;
+  transition: 0.5s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.ui-title {
+  vertical-align: middle;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  font-weight: 300;
+  cursor: default;
+}
+
+.ui-title::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #000;
+  z-index: -1;
+  transform: scale(3);
+  filter: blur(4px);
+}
+
+.title-chinese {
+  font-family: serif;
+}
+
+.ui-icon img {
+  width: 85px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.ui-icon img:hover {
+  transform: scale(1.1);
+}
+
+/* 아이콘 깜빡임 애니메이션 */
+.ui-icon img.icon-blink {
+  animation: iconBlink 0.5s ease-in-out infinite;
+}
+
+@keyframes iconBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.ui-left img:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.ui-left img:hover + .rect-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 메인로고 깜빡임 애니메이션 */
+.ui-left img.logo-blink {
+  animation: logoBlink 1s ease-in-out infinite;
+}
+
+@keyframes logoBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/*---- 화살 애니메이션 ----*/
+.arrow-animation-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.arrow-trigger {
+  width: 55px;
+  height: 55px;
+  border: 2px solid #ff0000;
+  border-radius: 1000px;
+  animation: triggerPulse 2.3s ease-in-out infinite;
+  position: absolute;
+  top: 47%;
+  right: 45%;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+@keyframes triggerPulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.9;
+  }
+
+  80% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+.arrow {
+  object-fit: cover;
+  position: absolute;
+  opacity: 0;
+  z-index: 2;
+}
+
+.arrow-1 {
+  width: 130px;
+  top: 45%;
+  left: 33%;
+}
+
+.arrow-2 {
+  width: 240px;
+  top: 62%;
+  left: 31%;
+}
+
+.arrow-3 {
+  width: 200px;
+  top: 52%;
+  left: 34%;
+}
+
+.arrow-4 {
+  width: 200px;
+  top: 62%;
+  left: 34%;
+}
+
+/*---------- 구름 부분 ----------*/
+.content02 {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.content02 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*-------- 모달창 --------*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 10000;
+}
+
+/* 모달 내부 박스 */
+.modal-content {
+  width: 45vw;
+  height: 25svh;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 40px 40px 60px 40px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  transform: translateY(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.modal-content .title-chinese {
+  font-size: 1.6rem;
+  font-weight: 50;
+  margin-left: 1px;
+  font-family: "Zen Antique Soft", serif;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  word-break: keep-all;
+}
+
+/* 닫기 버튼 */
+.modal-close-btn {
+  position: absolute;
+  border: none;
+  background: none;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  color: #666;
+}
+
+/* 드래그 가이드 (hell-1 전용) */
+.hell-1-ui .drag-guide {
+  position: fixed;
+  left: 8%;
+  bottom: 13%;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hell-1-ui .drag-guide.is-visible {
+  opacity: 1;
+}
+
+.hell-1-ui .drag-guide__lower-circle {
+  width: 55px;
+  height: 55px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+.hell-1-ui .drag-guide__line {
+  width: 1px;
+  height: 150px;
+  position: absolute;
+  bottom: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  z-index: 1;
+  transform-origin: bottom center;
+  overflow: hidden;
+}
+
+.hell-1-ui .drag-guide__upper-circle {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  background: transparent;
+  position: absolute;
+  bottom: 210px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.hell-1-ui .drag-guide__line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  transform-origin: bottom center;
+}
+
+.hell-1-ui .drag-guide__text {
+  position: absolute;
+  left: 80px;
+  bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 3;
+}
+
+.hell-1-ui .drag-guide__text p {
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.2;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.hell-1-ui .drag-guide__text p:first-child {
+  margin-bottom: 2px;
+}

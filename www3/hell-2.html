@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/hell-2.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!----------커서 드래그--------->
+    <div class="hell-cursor" aria-hidden="true">
+      <span class="hell-cursor__upper"></span>
+      <span class="hell-cursor__lower"></span>
+    </div>
+
+    <!----------페이지 트랜지션 박스---------->
+    <div class="page-transition-overlay"></div>
+
+    <!----------스크롤용 빈 박스---------->
+    <div class="empty"></div>
+
+    <!----------도산지옥 이미지 섹션---------->
+    <div class="content01">
+      <!--도산지옥 배경-->
+      <div class="hell-2-wrapper">
+        <img class="hell-2" src="./img/hell-2.png" alt="도산지옥-배경" />
+        <!--불꽃 파티클-->
+        <canvas class="fire-particles"></canvas>
+      </div>
+
+      <!--도산지옥 해골-->
+      <div class="skull-wrapper">
+        <img class="skull skull-1" src="./img/skull 1.png" alt="" />
+        <img class="skull skull-2" src="./img/skull 2.png" alt="" />
+        <img class="skull skull-3" src="./img/skull 3.png" alt="" />
+        <img class="skull skull-4" src="./img/skull 4.png" alt="" />
+        <img class="skull skull-5" src="./img/skull 5.png" alt="" />
+        <img class="skull skull-6" src="./img/skull 6.png" alt="" />
+        <img class="skull skull-7" src="./img/skull 7.png" alt="" />
+        <img class="skull skull-8" src="./img/skull 8.png" alt="" />
+        <img class="skull skull-9" src="./img/skull 9.png" alt="" />
+      </div>
+
+      <!--지옥 UI-->
+      <div class="hell-2-ui">
+        <!--지옥 UI 헤더-->
+        <div class="hell-2-ui-header">
+          <div class="ui-left">
+            <img src="../img/main-logo.webp" alt="" />
+            <p class="rect-hint">실마리 - 해골을 클릭해보세요</p>
+          </div>
+          <div class="ui-title">
+            <p>
+              디사구 화탕지옥 &#40;<span class="title-chinese">沸湯地獄</span
+              >&#41;
+            </p>
+          </div>
+          <div class="ui-icon">
+            <img
+              src="./img/icon2.webp"
+              alt=""
+              class="js-modal-trigger"
+              style="cursor: pointer" />
+          </div>
+        </div>
+
+        <!--ui아이콘 클릭시 나오는 모달창-->
+        <div class="modal-overlay">
+          <div class="modal-content">
+            <button class="modal-close-btn">닫기</button>
+            <h2>화탕지옥 <span class="title-chinese">沸湯地獄</span></h2>
+            <p>
+              이곳은 이재 화탕지옥으로, 무단도용의 업으로 인해 해태가 지키는
+              불문 앞에서,
+              <br />
+              남의 것을 훔친 손끝이 뜨겁게 타오르는 형벌의 세계입니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!----------구름 부분---------->
+    <div class="content02">
+      <div class="ct02-cloud">
+        <img src="../img/cloud.jpg" alt="" />
+      </div>
+    </div>
+
+    <!----------자연스러운 트랜지션용 빈 박스---------->
+    <div class="bottom-empty"></div>
+
+    <!----------GSAP CORE---------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <!----------자바스크립트 파일---------->
+    <script src="../js/transition.js" defer></script>
+    <script src="../js/scroll-stopper.js" defer></script>
+    <script src="./js/hell-2.js"></script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/hell-1.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!----------커서 드래그--------->
+    <div class="hell-cursor" aria-hidden="true">
+      <span class="hell-cursor__upper"></span>
+      <span class="hell-cursor__lower"></span>
+    </div>
+
+    <!----------페이지 트랜지션 박스---------->
+    <div class="page-transition-overlay"></div>
+
+    <!----------스크롤용 빈 박스---------->
+    <div class="empty"></div>
+
+    <!----------도산지옥 이미지 섹션---------->
+    <div class="content01">
+      <!--도산지옥 배경-->
+      <div class="hell-1-wrapper">
+        <img class="hell-1" src="./img/hell-1.png" alt="도산지옥-배경" />
+      </div>
+
+      <!--도산지옥 불꽃-->
+      <div class="fire-wrapper">
+        <img class="fire left-fire" src="./img/fire 1.png" alt="" />
+        <img class="fire right-fire" src="./img/fire 2.png" alt="" />
+      </div>
+
+      <!--지옥 UI-->
+      <div class="hell-1-ui">
+        <!--지옥 UI 헤더-->
+        <div class="hell-1-ui-header">
+          <div class="ui-left">
+            <img src="../img/main-logo.webp" alt="" />
+            <p class="rect-hint">실마리 - 화면에 있는 자판을 눌러보세요</p>
+          </div>
+          <div class="ui-title">
+            <p>
+              디사구 도산지옥 &#40;<span class="title-chinese">刀山地獄</span
+              >&#41;
+            </p>
+          </div>
+          <div class="ui-icon">
+            <img
+              src="./img/icon1.webp"
+              alt=""
+              class="js-modal-trigger"
+              style="cursor: pointer" />
+          </div>
+        </div>
+
+        <!--ui아이콘 클릭시 나오는 모달창-->
+        <div class="modal-overlay">
+          <div class="modal-content">
+            <button class="modal-close-btn">닫기</button>
+            <h2>도산지옥 <span class="title-chinese">刀山地獄</span></h2>
+            <p>
+              이곳은 조재 도산지옥으로, 악플과 조리돌림의 언행이 데이터 칼날이
+              되어
+              <br />
+              망자에게 되돌아오는 형벌의 세계입니다.
+            </p>
+          </div>
+        </div>
+
+        <!--화살 애니메이션-->
+        <div class="arrow-animation-wrapper">
+          <div class="arrow-trigger"></div>
+          <div class="arrow-wrapper">
+            <img class="arrow arrow-1" src="./img/arrow 1.png" alt="" />
+            <img class="arrow arrow-2" src="./img/arrow 2.png" alt="" />
+            <img class="arrow arrow-3" src="./img/arrow 3.png" alt="" />
+            <img class="arrow arrow-4" src="./img/arrow 4.png" alt="" />
+          </div>
+        </div>
+
+        <!--드래그 가이드-->
+        <div class="drag-guide">
+          <div class="drag-guide__lower-circle"></div>
+          <div class="drag-guide__line"></div>
+          <div class="drag-guide__upper-circle"></div>
+          <div class="drag-guide__text">
+            <p>다음 지옥으로 넘어가기 위해서</p>
+            <p>위의 동작을 따라해주세요.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!----------구름 부분---------->
+    <div class="content02">
+      <div class="ct02-cloud">
+        <img src="../img/cloud.jpg" alt="" />
+      </div>
+    </div>
+
+    <!----------자연스러운 트랜지션용 빈 박스---------->
+    <div class="bottom-empty"></div>
+
+    <!----------GSAP CORE---------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <!----------자바스크립트 파일---------->
+    <script src="../js/transition.js" defer></script>
+    <script src="../js/scroll-stopper.js" defer></script>
+    <script src="./js/hell-1.js"></script>
+  </body>
+</html>
